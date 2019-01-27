@@ -15,7 +15,7 @@ class DepthFirstSearch
 public:
 
 	DepthFirstSearch(UndirectedGraph* G, int start) : start(start) {
-		this->G = std::make_unique<UndirectedGraph*>(G);
+		this->G = std::make_unique<UndirectedGraph>(*G);
 		marked.resize(G->V());
 		edgeTo.resize(G->V());
 		std::fill(marked.begin(), marked.end(), false);
@@ -23,7 +23,7 @@ public:
 	}
 
 	void search() const {
-		search(*(G.get()), 0);
+		search(G.get(), 0);
 	}
 
 	void setStart(int newStart) {
@@ -56,7 +56,7 @@ public:
 
 private:
 
-	std::unique_ptr<UndirectedGraph*> G;
+	std::unique_ptr<UndirectedGraph> G;
 	mutable std::vector<bool> marked;
 	mutable std::vector<int> edgeTo;
 	int start;

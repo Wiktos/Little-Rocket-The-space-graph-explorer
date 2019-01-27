@@ -49,6 +49,9 @@ int UndirectedGraph::avgDegree(const UndirectedGraph& G) {
 	return 2 * G.E() / G.V();
 }
 
+UndirectedGraph::UndirectedGraph() : graph(0), vertices(0), edges(0) {
+}
+
 UndirectedGraph::UndirectedGraph(int V) : graph(V), vertices(V), edges(0) {
 	std::fill(graph.begin(), graph.end(), std::forward_list<int>());
 }

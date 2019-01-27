@@ -19,6 +19,7 @@ public:
 	static int numberOfSelfLoops(const UndirectedGraph& G);
 	static std::string toString(const UndirectedGraph& G);
 
+	UndirectedGraph();
 	explicit UndirectedGraph(int V);
 	UndirectedGraph(const std::initializer_list<std::pair<int, int>>& ls);
 	UndirectedGraph(const UndirectedGraph&) = default;
