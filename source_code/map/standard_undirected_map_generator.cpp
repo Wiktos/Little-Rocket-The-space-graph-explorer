@@ -26,7 +26,7 @@ void connectLayers(int layers, int nodesInLayer, int layersConnection, Undirecte
 		//interlayers connections
 		if (i < layers - 1) {
 			std::uniform_int_distribution<int> currLayerDistribution(i * nodesInLayer + 1, i * nodesInLayer + nodesInLayer);
-			std::uniform_int_distribution<int> nextLayerDistribution = std::uniform_int_distribution<int>((i + 1) * nodesInLayer, (i + 1) * nodesInLayer + nodesInLayer);
+			std::uniform_int_distribution<int> nextLayerDistribution = std::uniform_int_distribution<int>((i + 1) * nodesInLayer + 1, (i + 1) * nodesInLayer + nodesInLayer);
 
 			for (int j = 0; j < layersConnection; j++) {
 				map->addEdge(currLayerDistribution(engine), nextLayerDistribution(engine));
