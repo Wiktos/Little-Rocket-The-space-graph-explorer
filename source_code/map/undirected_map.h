@@ -12,7 +12,6 @@ public:
 	
 	UndirectedMap(int layers, int nodesInLayer);
 
-
 private:
 
 	static const int START_NODE_IDX = 0;

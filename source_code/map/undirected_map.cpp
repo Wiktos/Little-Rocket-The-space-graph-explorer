@@ -14,17 +14,32 @@ endNodeIdx(layers * nodesInLayer + 1)
 }
 
 void UndirectedMap::generateMapPaths() {
+
+	std::random_device device;
+	std::default_random_engine engine(device());
+	std::uniform_int_distribution<int> uniformDistribution;
 	//connect layer node
 	for (int i = 0; i < layers; i++) {
+
 		for (int j = 1; j < nodesInLayer; j++) {
+			//connects with themselves
 			addEdge(j + i * nodesInLayer, j + i * nodesInLayer + 1);
+		}
+
+		//connects layers
+		if (i < layers - 1) {
+			std::uniform_int_distribution<int> currLayerDistribution(i * nodesInLayer + 1, i * nodesInLayer + nodesInLayer);
+			std::uniform_int_distribution<int> nextLayerDistribution = std::uniform_int_distribution<int>((i + 1) * nodesInLayer, (i + 1) * nodesInLayer + nodesInLayer);
+
+			for (int j = 0; j < 2; j++) {
+				//connects with next layer
+				addEdge(currLayerDistribution(engine), nextLayerDistribution(engine));
+			}
 		}
 	}
 
 	//connect start node to first layer
-	std::random_device device;
-	std::default_random_engine engine(device());
-	std::uniform_int_distribution<int> uniformDistribution(1, nodesInLayer);
+	uniformDistribution = std::uniform_int_distribution<int>(1, nodesInLayer);
 	for (int i = 1; i < nodesInLayer; i++) {
 		addEdge(START_NODE_IDX, uniformDistribution(engine));
 	}
