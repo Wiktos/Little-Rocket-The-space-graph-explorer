@@ -12,5 +12,5 @@ namespace ugraph_test {
 	void testDegreeMethod();
 	void testMaxDegreeMethod();
 	void testNumberOfSelfLoopsMethod();
-
+	void testAreNeighboursMethod();
 }

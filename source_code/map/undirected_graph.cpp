@@ -1,3 +1,5 @@
+#include <exception>
+#include <algorithm>
 #include "undirected_graph.h"
 
 int UndirectedGraph::degree(const UndirectedGraph& G, int v) {
@@ -69,9 +71,18 @@ int UndirectedGraph::E() const {
 	return edges;
 }
 
+bool UndirectedGraph::areNeighbours(int v, int w) const {
+	std::forward_list<int> neighbours = adj(v);
+	return std::find(neighbours.begin(), neighbours.end(), w) != neighbours.end();
+}
+
 void UndirectedGraph::addEdge(int v, int w) {
 	checkVertex(v);
 	checkVertex(w);
+
+	if (areNeighbours(v, w)) {
+		return;
+	}
 
 	if (v == w) {
 		addSelfLoop(v);

@@ -98,6 +98,20 @@ void ugraph_test::testNumberOfSelfLoopsMethod() {
 	}
 }
 
+void ugraph_test::testAreNeighboursMethod() {
+	const std::string ERROR_MSG = "Error in areNeighbours method test ";
+	UndirectedGraph G({ {1, 0}, {1, 1}, {1, 2} });
+
+	if(G.areNeighbours(2, 0)) {
+		ErrorMessenger::get_instance().report(ERROR_MSG + "2, 0 aren't neighbours");
+	}
+
+	if (!G.areNeighbours(2, 1)) {
+		ErrorMessenger::get_instance().report(ERROR_MSG + "2, 1 are neighbours");
+	}
+
+}
+
 void ugraph_test::performAllTests() {
 	ugraph_test::testDefauldConstructor();
 	ugraph_test::testInitializerListConstructor();
@@ -106,6 +120,7 @@ void ugraph_test::performAllTests() {
 	ugraph_test::testDegreeMethod();
 	ugraph_test::testMaxDegreeMethod();
 	ugraph_test::testNumberOfSelfLoopsMethod();
+	ugraph_test::testAreNeighboursMethod();
 
 	ErrorMessenger::get_instance().print_report(std::cout);
 }

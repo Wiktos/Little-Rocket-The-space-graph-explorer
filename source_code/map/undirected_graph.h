@@ -1,8 +1,6 @@
 #pragma once
 #include <vector>
 #include <forward_list>
-#include <exception>
-#include <algorithm>
 #include <string>
 
 /*
@@ -31,9 +29,11 @@ public:
 
 	int V() const;
 	int E() const;
+	bool areNeighbours(int v, int w) const;
 	void addEdge(int v, int w);
 	std::forward_list<int> adj(int v) const;
 
+	~UndirectedGraph() = default;
 private:
 
 	std::vector<std::forward_list<int>> graph;
