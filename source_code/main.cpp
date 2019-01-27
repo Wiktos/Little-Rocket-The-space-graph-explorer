@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../tests/undirectedgraph_tests.h"
+#include "../tests/map/undirectedgraph_tests.h"
 #include "map/undirected_map.h"
 
 using namespace std;
