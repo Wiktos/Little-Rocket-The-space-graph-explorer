@@ -1,5 +1,7 @@
 #pragma once
+#include <memory>
 #include "undirected_graph.h"
+#include "standard_undirected_map_generator.h"
 
 /*
 	Map class represents the model of undirected graph specified to be a board of visualization.
@@ -10,14 +12,23 @@ class UndirectedMap : public UndirectedGraph
 {
 public:
 	
+	static const int START_NODE_IDX = 0;
+	const int END_NODE_IDX;
+
 	UndirectedMap(int layers, int nodesInLayer);
+	
+	int layersNum() const;
+	int nodesPerLayer() const;
+
+	void regenerate();
+	void changeGenerator(UndirectedMapGenerator* newGenerator);
+
+	~UndirectedMap() = default;
 
 private:
 
-	static const int START_NODE_IDX = 0;
-	const int endNodeIdx;
 	const int layers;
 	const int nodesInLayer;
-
-	void generateMapPaths();
+	
+	std::unique_ptr<UndirectedMapGenerator*> generator;
 };
