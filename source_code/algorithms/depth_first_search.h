@@ -2,7 +2,6 @@
 #include <vector>
 #include <memory>
 #include <stack>
-#include <forward_list>
 #include <queue>
 #include <algorithm>
 
@@ -34,19 +33,13 @@ public:
 		return marked[v];
 	}
 
-	std::forward_list<int> pathTo(int v) const {
-		std::stack<int> revPath;
+	std::stack<int> pathTo(int v) const {
+		std::stack<int> path;
 		while (v != start) {
-			revPath.push(v);
+			path.push(v);
 			v = edgeTo[v];
 		}
-
-		std::forward_list<int> path;
-		path.push_front(start);
-		while (!revPath.empty()) {
-			path.push_front(revPath.top());
-			revPath.pop();
-		}
+		path.push(start);
 		return path;
 	}
 

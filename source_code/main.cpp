@@ -16,8 +16,10 @@ int main(int args, char* argv[]) {
 
 	std::cout << UndirectedGraph::toString(*map) << std::endl;
 	if (searchEngine.hasPathTo(map->END_NODE_IDX)) {
-		for (int w : searchEngine.pathTo(map->END_NODE_IDX)) {
-			std::cout << w << ' ';
+		std::stack<int> path = searchEngine.pathTo(map->END_NODE_IDX);
+		while(!path.empty()) {
+			std::cout << path.top() << ' ';
+			path.pop();
 		}
 	}
 
