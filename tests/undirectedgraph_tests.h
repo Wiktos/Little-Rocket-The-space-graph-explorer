@@ -6,5 +6,11 @@ namespace ugraph_test {
 
 	void performAllTests();
 	void testDefauldConstructor();
+	void testInitializerListConstructor();
+	void testAdjMethod();
+	void testAddEdgeMethod();
+	void testDegreeMethod();
+	void testMaxDegreeMethod();
+	void testNumberOfSelfLoopsMethod();
 
 }

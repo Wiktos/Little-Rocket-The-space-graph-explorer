@@ -21,12 +21,11 @@ int UndirectedGraph::maxDegree(const UndirectedGraph& G) {
 
 int UndirectedGraph::numberOfSelfLoops(const UndirectedGraph& G) {
 	int selfLoops = 0;
-	for (auto ls : G.graph) {
-		for (auto v : ls) {
-			if (std::find(ls.begin(), ls.end(), v) != ls.end()) {
-				selfLoops++;
-				continue;
-			}
+	for (unsigned int i = 0; i < G.graph.size(); i++) {
+		std::forward_list<int> adj = G.adj(i);
+		if (std::find(adj.begin(), adj.end(), i) != adj.end()) {
+			selfLoops++;
+			continue;
 		}
 	}
 	return selfLoops;
@@ -55,7 +54,7 @@ UndirectedGraph::UndirectedGraph(int V) : graph(V), vertices(V), edges(0) {
 UndirectedGraph::UndirectedGraph(const std::initializer_list<std::pair<int, int>>& ls) : graph(ls.size()), vertices(ls.size()), edges(0) {
 	std::fill(graph.begin(), graph.end(), std::forward_list<int>());
 	for (auto p : ls) {
-		auto [first, second] = p;
+		auto[first, second] = p;
 		checkVertex(first);
 		checkVertex(second);
 		addEdge(first, second);
@@ -73,7 +72,7 @@ int UndirectedGraph::E() const {
 void UndirectedGraph::addEdge(int v, int w) {
 	checkVertex(v);
 	checkVertex(w);
-	
+
 	if (v == w) {
 		addSelfLoop(v);
 		return;
