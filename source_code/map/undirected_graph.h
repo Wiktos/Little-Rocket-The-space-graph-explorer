@@ -35,6 +35,7 @@ public:
 	std::forward_list<int> adj(int v) const;
 
 private:
+
 	std::vector<std::forward_list<int>> graph;
 	const int vertices;
 	int edges;
