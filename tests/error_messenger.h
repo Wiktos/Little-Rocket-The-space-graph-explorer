@@ -28,5 +28,7 @@ public:
 		for (auto msg : messages) {
 			os << msg << '\n';
 		}
+		messages.clear();
+		errors_cnt = 0;
 	}
 };

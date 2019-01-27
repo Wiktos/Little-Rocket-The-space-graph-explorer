@@ -122,5 +122,6 @@ void ugraph_test::performAllTests() {
 	ugraph_test::testNumberOfSelfLoopsMethod();
 	ugraph_test::testAreNeighboursMethod();
 
+	std::cout << "UndirectedGraph tests report : \n";
 	ErrorMessenger::get_instance().print_report(std::cout);
 }

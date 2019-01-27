@@ -1,16 +1,13 @@
 #include <iostream>
 #include "../tests/map/undirectedgraph_tests.h"
-#include "map/undirected_map.h"
+#include "../tests/map/undirected_map_tests.h"
 
 using namespace std;
 
 int main(int args, char* argv[]) {
 
 	ugraph_test::performAllTests();
-
-	UndirectedMap map(3, 4);
-
-	std::cout << UndirectedGraph::toString(map);
+	umap_test::performAllTests();
 
 	return 0;
 }
