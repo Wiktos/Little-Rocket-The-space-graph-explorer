@@ -24,5 +24,5 @@ void UndirectedMap::regenerate() {
 }
 
 void UndirectedMap::changeGenerator(UndirectedMapGenerator* newGenerator) {
-	this->generator = std::move(std::make_unique< UndirectedMapGenerator*>(newGenerator));
+	this->generator = std::move(std::make_unique<UndirectedMapGenerator*>(newGenerator));
 }

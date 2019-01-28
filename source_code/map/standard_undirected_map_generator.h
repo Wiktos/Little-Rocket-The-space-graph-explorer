@@ -17,8 +17,7 @@ public :
 	{}
 
 	void generateMapPaths(int layers, int nodesInLayer, int layersConnections) const override;
-	/*std::unique_ptr<UndirectedMapGenerator> makeUniquePtr() const override {
-		return std::make_unique<StandardUndirectedMapGenerator>(*this);
-	}*/
+
+	~StandardUndirectedMapGenerator() = default;
 
 };

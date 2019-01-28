@@ -16,7 +16,6 @@ public:
 	{}
 
 	virtual void generateMapPaths(int layers, int nodesInLayer, int layersConnections) const = 0;
-	//virtual std::unique_ptr<UndirectedMapGenerator> makeUniquePtr() const = 0;
 
 	virtual ~UndirectedMapGenerator() = default;
 
