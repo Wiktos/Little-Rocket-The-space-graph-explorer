@@ -9,15 +9,15 @@ class SearchAlgorithm
 {
 public:
 
-	SearchAlgorithm(UndirectedGraph* G, int start) : start(start) {
-		this->G = std::make_unique<UndirectedGraph>(*G);
-	}
+	SearchAlgorithm(UndirectedGraph* G, int start);
 
 	void performSearching() const;
 	void setStart(int newStart);
 	virtual bool hasPathTo(int v) const = 0;
 	virtual std::stack<int> pathTo(int v) const = 0;
 	virtual std::vector<int> traceTo(int v) const = 0;
+
+	virtual ~SearchAlgorithm() = default;
 
 protected:
 
