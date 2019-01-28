@@ -14,6 +14,10 @@ bool DepthFirstSearch::hasPathTo(int v) const {
 }
 
 std::stack<int> DepthFirstSearch::pathTo(int v) const {
+	if (!hasPathTo(v)) {
+		throw std::invalid_argument("There is no path to vertex : " + std::to_string(v));
+	}
+	
 	std::stack<int> path;
 	while (v != start) {
 		path.push(v);
@@ -24,6 +28,10 @@ std::stack<int> DepthFirstSearch::pathTo(int v) const {
 }
 
 std::vector<int> DepthFirstSearch::traceTo(int v) const {
+	if (!hasPathTo(v)) {
+		throw std::invalid_argument("There is no path to vertex : " + std::to_string(v));
+	}
+
 	auto vIter = std::find(trace.begin(), trace.end(), v);
 	return std::vector<int>(trace.begin(), ++vIter);
 }
