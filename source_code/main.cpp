@@ -21,6 +21,11 @@ int main(int args, char* argv[]) {
 			std::cout << path.top() << ' ';
 			path.pop();
 		}
+		std::cout << std::endl;
+		std::vector<int> trace = searchEngine.traceTo(map->END_NODE_IDX);
+		for (auto v : trace) {
+			std::cout << v << ' ';
+		}
 	}
 
 	return 0;

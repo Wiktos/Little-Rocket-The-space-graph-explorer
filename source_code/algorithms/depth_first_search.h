@@ -2,61 +2,33 @@
 #include <vector>
 #include <memory>
 #include <stack>
-#include <queue>
 #include <algorithm>
 
 #include "../map/undirected_graph.h"
 
 class DepthFirstSearch
 {
-	static const int NO_EDGE_FROM_VERTEX = -1;
-
 public:
 
-	DepthFirstSearch(UndirectedGraph* G, int start) : start(start) {
-		this->G = std::make_unique<UndirectedGraph>(*G);
-		marked.resize(G->V());
-		edgeTo.resize(G->V());
-		std::fill(marked.begin(), marked.end(), false);
-		std::fill(edgeTo.begin(), edgeTo.end(), NO_EDGE_FROM_VERTEX);
-	}
+	DepthFirstSearch(UndirectedGraph* G, int start);
 
-	void search() const {
-		search(G.get(), 0);
-	}
-
-	void setStart(int newStart) {
-		start = newStart;
-	}
-
-	bool hasPathTo(int v) const {
-		return marked[v];
-	}
-
-	std::stack<int> pathTo(int v) const {
-		std::stack<int> path;
-		while (v != start) {
-			path.push(v);
-			v = edgeTo[v];
-		}
-		path.push(start);
-		return path;
-	}
+	void search() const;
+	void setStart(int newStart);
+	bool hasPathTo(int v) const;
+	std::stack<int> pathTo(int v) const;
+	std::vector<int> traceTo(int v) const;
 
 private:
+
+	static const int NO_EDGE_FROM_VERTEX = -1;
 
 	std::unique_ptr<UndirectedGraph> G;
 	mutable std::vector<bool> marked;
 	mutable std::vector<int> edgeTo;
 	int start;
 
-	void search(UndirectedGraph* G, int v) const {
-		marked[v] = true;
-		for (int adj : G->adj(v)) {
-			if (!marked[adj]) {
-				edgeTo[adj] = v;
-				search(G, adj);
-			}
-		}
-	}
+	mutable std::vector<int> trace;
+
+	void search(UndirectedGraph* G, int v) const;
+
 };

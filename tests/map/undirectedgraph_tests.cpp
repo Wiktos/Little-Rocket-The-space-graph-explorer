@@ -109,7 +109,6 @@ void ugraph_test::testAreNeighboursMethod() {
 	if (!G.areNeighbours(2, 1)) {
 		ErrorMessenger::get_instance().report(ERROR_MSG + "2, 1 are neighbours");
 	}
-
 }
 
 void ugraph_test::performAllTests() {
