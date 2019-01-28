@@ -43,10 +43,6 @@ public:
 		return path;
 	}
 
-	std::queue<int> algorithmTrace() const {
-		return trace;
-	}
-
 private:
 
 	std::unique_ptr<UndirectedGraph> G;
@@ -54,17 +50,13 @@ private:
 	mutable std::vector<int> edgeTo;
 	int start;
 
-	mutable std::queue<int> trace;
-
 	void search(UndirectedGraph* G, int v) const {
 		marked[v] = true;
 		for (int adj : G->adj(v)) {
 			if (!marked[adj]) {
-				trace.push(v);
 				edgeTo[adj] = v;
 				search(G, adj);
 			}
-
 		}
 	}
 };

@@ -10,7 +10,7 @@ int main(int args, char* argv[]) {
 	ugraph_test::performAllTests();
 	umap_test::performAllTests();
 
-	UndirectedMap* map = new UndirectedMap(5, 10);
+	UndirectedMap* map = new UndirectedMap(3, 4);
 	DepthFirstSearch searchEngine(map, UndirectedMap::START_NODE_IDX);
 	searchEngine.search();
 
