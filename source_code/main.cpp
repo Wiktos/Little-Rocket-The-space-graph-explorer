@@ -12,7 +12,7 @@ int main(int args, char* argv[]) {
 
 	UndirectedMap* map = new UndirectedMap(3, 4);
 	DepthFirstSearch searchEngine(map, UndirectedMap::START_NODE_IDX);
-	searchEngine.search();
+	searchEngine.performSearching();
 
 	std::cout << UndirectedGraph::toString(*map) << std::endl;
 	if (searchEngine.hasPathTo(map->END_NODE_IDX)) {

@@ -1,19 +1,10 @@
 #include "depth_first_search.h"
 
-DepthFirstSearch::DepthFirstSearch(UndirectedGraph* G, int start) : start(start) {
-	this->G = std::make_unique<UndirectedGraph>(*G);
+DepthFirstSearch::DepthFirstSearch(UndirectedGraph* G, int start) : SearchAlgorithm(G, start) {
 	marked.resize(G->V());
 	edgeTo.resize(G->V());
 	std::fill(marked.begin(), marked.end(), false);
 	std::fill(edgeTo.begin(), edgeTo.end(), NO_EDGE_FROM_VERTEX);
-}
-
-void DepthFirstSearch::search() const {
-	search(G.get(), 0);
-}
-
-void DepthFirstSearch::setStart(int newStart) {
-	start = newStart;
 }
 
 bool DepthFirstSearch::hasPathTo(int v) const {
