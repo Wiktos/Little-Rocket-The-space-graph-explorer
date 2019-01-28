@@ -8,11 +8,11 @@ void umap_test::testConstructor() {
 
 	UndirectedMap map(2, 2);
 	if (map.layersNum() != 2) {
-		ErrorMessenger::get_instance().report(ERROR_MSG + " number of layers != 2");
+		ErrorMessenger::getInstance().report(ERROR_MSG + " number of layers != 2");
 	}
 
 	if (map.nodesPerLayer() != 2) {
-		ErrorMessenger::get_instance().report(ERROR_MSG + " nodes in layer != 2");
+		ErrorMessenger::getInstance().report(ERROR_MSG + " nodes in layer != 2");
 	}
 }
 
@@ -25,7 +25,7 @@ void umap_test::testRegenerateMethod() {
 	std::string nextGraph = UndirectedGraph::toString(map);
 
 	if (currGraph == nextGraph) {
-		ErrorMessenger::get_instance().report(ERROR_MSG + " regenerate method generated the same graph");
+		ErrorMessenger::getInstance().report(ERROR_MSG + " regenerate method generated the same graph");
 	}
 }
 
@@ -34,5 +34,5 @@ void umap_test::performAllTests() {
 	umap_test::testRegenerateMethod();
 
 	std::cout << "UndirectedMap tests report : \n";
-	ErrorMessenger::get_instance().print_report(std::cout);
+	ErrorMessenger::getInstance().printReport(std::cout);
 }

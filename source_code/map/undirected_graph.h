@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include <forward_list>
 #include <string>
+#include <forward_list>
 
 /*
 	Graph class represents undirected graph's API.

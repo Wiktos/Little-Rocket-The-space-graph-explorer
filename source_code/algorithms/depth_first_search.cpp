@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "depth_first_search.h"
 
 DepthFirstSearch::DepthFirstSearch(UndirectedGraph* G, int start) : SearchAlgorithm(G, start) {

@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+
 #include "undirected_graph.h"
 #include "standard_undirected_map_generator.h"
 

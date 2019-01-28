@@ -1,3 +1,5 @@
+#include <random>
+
 #include "standard_undirected_map_generator.h"
 #include "undirected_map.h"
 

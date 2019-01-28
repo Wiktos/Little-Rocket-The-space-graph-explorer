@@ -1,6 +1,4 @@
 #pragma once
-#include <algorithm>
-
 #include "search_algorithm.h"
 
 class DepthFirstSearch final : public SearchAlgorithm
