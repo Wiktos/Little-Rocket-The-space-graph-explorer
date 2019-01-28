@@ -21,7 +21,7 @@ void umap_test::testRegenerateMethod() {
 
 	UndirectedMap map(2, 2);
 	std::string currGraph = UndirectedGraph::toString(map);
-	map.regenerate();
+	map.regenerate(1);
 	std::string nextGraph = UndirectedGraph::toString(map);
 
 	if (currGraph == nextGraph) {

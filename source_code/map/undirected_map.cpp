@@ -7,8 +7,7 @@ UndirectedMap::UndirectedMap(int layers, int nodesInLayer) : UndirectedGraph(lay
 		throw std::invalid_argument("UndirectedMap invalid constructor parameters");
 	}
 
-	generator = std::make_unique<UndirectedMapGenerator*>(new StandardUndirectedMapGenerator(this));
-	(*generator)->generateMapPaths(layers, nodesInLayer, nodesInLayer / 2);
+	generator = StandardUndirectedMapGenerator();
 }
 
 int UndirectedMap::layersNum() const {
@@ -19,10 +18,10 @@ int UndirectedMap::nodesPerLayer() const {
 	return nodesInLayer;
 }
 
-void UndirectedMap::regenerate() {
-	(*generator)->generateMapPaths(layers, nodesInLayer, nodesInLayer / 2);
+void UndirectedMap::regenerate(int layersConnections) {
+	generator(this, layersConnections);
 }
 
-void UndirectedMap::changeGenerator(UndirectedMapGenerator* newGenerator) {
-	this->generator = std::move(std::make_unique<UndirectedMapGenerator*>(newGenerator));
+void UndirectedMap::changeGenerator(std::function<void(UndirectedMap*, int)> newGenerator) {
+	generator = newGenerator;
 }

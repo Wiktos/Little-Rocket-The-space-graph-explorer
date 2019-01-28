@@ -1,5 +1,5 @@
 #pragma once
-#include <memory>
+#include <functional>
 
 #include "undirected_graph.h"
 #include "standard_undirected_map_generator.h"
@@ -26,8 +26,8 @@ public:
 	int layersNum() const;
 	int nodesPerLayer() const;
 
-	void regenerate();
-	void changeGenerator(UndirectedMapGenerator* newGenerator);
+	void regenerate(int layersConnections);
+	void changeGenerator(std::function<void(UndirectedMap*, int)> newGenerator);
 
 	~UndirectedMap() = default;
 
@@ -36,5 +36,5 @@ private:
 	const int layers;
 	const int nodesInLayer;
 	
-	std::unique_ptr<UndirectedMapGenerator*> generator;
+	std::function<void(UndirectedMap*, int)> generator;
 };

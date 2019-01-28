@@ -1,6 +1,6 @@
 #pragma once
 
-#include "undirected_map_generator.h"
+class UndirectedMap;
 
 /*
 	StandardUndirectedMapGenerator provides default implementation of generation of graph that will be searched.
@@ -9,14 +9,13 @@
 
 	by Wiktor £azarski
 */
-class StandardUndirectedMapGenerator final : public UndirectedMapGenerator
+class StandardUndirectedMapGenerator
 {
 public :
 
-	StandardUndirectedMapGenerator(UndirectedMap* map) : UndirectedMapGenerator(map)
-	{}
+	StandardUndirectedMapGenerator() = default;
 
-	void generateMapPaths(int layers, int nodesInLayer, int layersConnections) const override;
+	void operator()(UndirectedMap* map, int layersConnections) const;
 
 	~StandardUndirectedMapGenerator() = default;
 

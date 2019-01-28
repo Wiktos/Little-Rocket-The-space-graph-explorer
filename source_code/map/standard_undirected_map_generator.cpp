@@ -11,10 +11,10 @@ void connectLayers(int layers, int nodesInLayer, int layersConnection, Undirecte
 void connectStartingNode(int nodesInLayer, UndirectedMap* const map);
 void connectLastNode(int nodesInLayer, UndirectedMap* const map);
 
-void StandardUndirectedMapGenerator::generateMapPaths(int layers, int nodesInLayer, int layersConnections) const {
-	connectLayers(layers, nodesInLayer, layersConnections, map.get());
-	connectStartingNode(nodesInLayer, map.get());
-	connectLastNode(nodesInLayer, map.get());
+void StandardUndirectedMapGenerator::operator()(UndirectedMap* map, int layersConnections) const {
+	connectLayers(map->layersNum(), map->nodesPerLayer(), layersConnections, map);
+	connectStartingNode(map->nodesPerLayer(), map);
+	connectLastNode(map->nodesPerLayer(), map);
 }
 
 void connectLayers(int layers, int nodesInLayer, int layersConnection, UndirectedMap* const map) {
