@@ -8,6 +8,10 @@
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "visualisation/openglapplication.h"
+#include "visualisation/scenebuilder.h"
+#include "visualisation/scene_controller.h"
+
 #include "../tests/map/undirectedgraph_tests.h"
 #include "../tests/map/undirected_map_tests.h"
 #include "../tests/algorithms//dfs_test.h"
@@ -25,38 +29,45 @@ int main(int args, char* argv[]) {
 #endif // TESTS_ON
 
 	try	{
-		if (glfwInit() != GL_TRUE) {
-			throw std::runtime_error("Fail to init GLFW");
-		}
+		OpenGLApplication::initGLFW();
 
-		glfwWindowHint(GLFW_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
+		SceneBuilder builder;
+		builder.addSceneHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
+		builder.setTitle("The Little Rocket - The Space Graph Explorer");
+		builder.setFramebufferSizeCallback([](GLFWwindow*, int w, int h)->void{
+			glViewport(0, 0, w, h);
+		});
 
-		GLFWwindow* window = glfwCreateWindow(800, 600, "The Little Rocket - The Space Graph Explorer", nullptr, nullptr);
-		glfwMakeContextCurrent(window);
+		Scene mainScene = builder.createScene();
+		OpenGLApplication app;
+		app.makeContextCurrent(mainScene);
 
-		glewExperimental = true;
-		if (glewInit() != GLEW_OK) {
-			throw std::runtime_error("Fail to init GLEW");
-		}
+		OpenGLApplication::initGLEW();
 
-		glViewport(0, 0, 800, 600);
-		while (!glfwWindowShouldClose(window)) {
-			glfwPollEvents();
+		SceneController controller(&mainScene);
+		controller.registerControlMethod(GLFW_KEY_ESCAPE, [&app]() {
+			app.setApplicationShouldClose(GL_TRUE);
+		});
 
-			glClearColor(.3f, 0.5f, 0.8f, .0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+		while (!app.shouldAppBeClosed()) {
+			controller.pollEvents();
 
-			glfwSwapBuffers(window);
+			mainScene.clearColor({ .3f, 0.5f, 0.8f, .0f });
+			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT });
+
+			mainScene.swapBuffers();
 		}
 
 	}
 	catch (const std::runtime_error& ex) {
 		std::cerr << ex.what();
 	}
-
-	glfwTerminate();
+	catch (std::exception& ex) {
+		std::cerr << ex.what() << '\n';
+	}
+	catch (...) {
+		std::cerr << "Unknown exception\n";
+	}
 
 	return 0;
 }
