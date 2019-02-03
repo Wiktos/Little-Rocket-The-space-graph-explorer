@@ -7,22 +7,18 @@ class SceneObject
 
 protected:
 
-	GLuint VAO, VBO;
-	ShaderProgram shader;
+	mutable GLuint VAO, VBO;
+	mutable ShaderProgram shader;
 
 public :
 	
-	SceneObject(ShaderProgram shader) : shader(shader)
+	SceneObject(const std::string& vertexPath, const std::string& fragmentPath) : shader(vertexPath.c_str(), fragmentPath.c_str())
 	{}
 
 	void draw() const {
-		/*
-			TODO:
-			- IF SHADERS OR TRANSFORMATION SPECIFIED PERFORM
-		*/
-		
-
+		shader.use();
 		drawObject();
+		glUseProgram(0);
 	}
 
 	virtual ~SceneObject() {

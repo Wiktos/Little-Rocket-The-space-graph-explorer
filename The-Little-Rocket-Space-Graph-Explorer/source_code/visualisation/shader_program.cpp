@@ -2,13 +2,13 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
 using namespace std;
 
 #include <GL/glew.h>
 #include "shader_program.h"
 
-string readShaderCode(const GLchar* shaderPath)
-{
+string readShaderCode(const GLchar* shaderPath) {
 	ifstream shader_file;
 	shader_file.exceptions(ifstream::badbit);
 
@@ -19,8 +19,7 @@ string readShaderCode(const GLchar* shaderPath)
 	return shader_stream.str();
 }
 
-GLuint compileShader(const GLchar* shaderCode, GLenum shaderType)
-{
+GLuint compileShader(const GLchar* shaderCode, GLenum shaderType) {
 	GLuint shader_id = glCreateShader(shaderType);
 	glShaderSource(shader_id, 1, &shaderCode, NULL);
 	glCompileShader(shader_id);
@@ -38,8 +37,7 @@ GLuint compileShader(const GLchar* shaderCode, GLenum shaderType)
 	return shader_id;
 }
 
-ShaderProgram::ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath)
-{
+ShaderProgram::ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath) {
 	// prepare vertex and fragment shaders
 	string vertex_code = readShaderCode(vertexPath);
 	GLuint vertex_id = compileShader(vertex_code.c_str(), GL_VERTEX_SHADER);

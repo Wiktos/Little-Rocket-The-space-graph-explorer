@@ -38,11 +38,16 @@ int main(int args, char* argv[]) {
 			app.setApplicationShouldClose(GL_TRUE);
 		});
 
+		GraphNode singleNode("source_code/visualisation/shaders/node_vertex.vert", "source_code/visualisation/shaders/node_fragment.frag");
+		mainScene.attachObject(&singleNode);
+
 		while (!app.shouldAppBeClosed()) {
 			controller.pollEvents();
 
-			mainScene.clearColor({ .3f, 0.5f, 0.8f, .0f });
+			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });
 			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT });
+
+			mainScene.drawObjects();
 
 			mainScene.swapBuffers();
 		}
