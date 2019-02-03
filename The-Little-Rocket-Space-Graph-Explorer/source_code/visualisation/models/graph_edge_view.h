@@ -1,7 +1,7 @@
 #pragma once
 #include <array>
 #include "scene_object.h"
-#include "point3D.h"
+#include "point3d.h"
 
 /*
 	GraphEdgeView class represents view of one edge that connects nodes of graph in OpenGL application.

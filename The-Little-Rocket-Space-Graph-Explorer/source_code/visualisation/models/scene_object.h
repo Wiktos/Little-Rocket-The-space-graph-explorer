@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include "shader_program.h" 
-#include "camera.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include "shader_program.h"
 
 /*
 	SceneObject class provides an interface for every object that would like to be drawn in Scene.

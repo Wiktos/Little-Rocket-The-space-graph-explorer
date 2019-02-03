@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "scene_object.h"
-#include "point3D.h"
+#include "point3d.h"
 
 /*
 	GraphNodeView class represents view of one node in OpenGL application.

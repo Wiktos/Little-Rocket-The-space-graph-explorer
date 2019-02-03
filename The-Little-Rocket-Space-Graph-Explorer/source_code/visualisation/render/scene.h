@@ -3,7 +3,8 @@
 #include <vector>
 #include <memory>
 
-#include "scene_object.h"
+#include "../models/scene_object.h"
+#include "../control/camera.h"
 #include "color.h"
 
 /*
