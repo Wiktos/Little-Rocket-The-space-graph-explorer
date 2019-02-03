@@ -8,6 +8,14 @@
 
 class Scene
 {
+	friend class SceneBuilder;
+
+	GLFWwindow *window;
+	std::vector<SceneObject*> objects;
+
+	Scene(GLFWwindow *window) : window(window)
+	{}
+
 public :
 	
 	Scene(const Scene&) = default;
@@ -24,14 +32,4 @@ public :
 	void attachObject(SceneObject* object);
 
 	~Scene() = default;
-
-private:
-	
-	friend class SceneBuilder;
-
-	GLFWwindow *window;
-	std::vector<SceneObject*> objects;
-
-	Scene(GLFWwindow *window) : window(window)
-	{}
 };

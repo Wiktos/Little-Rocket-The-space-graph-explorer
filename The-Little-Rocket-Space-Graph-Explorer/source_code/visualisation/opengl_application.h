@@ -10,6 +10,8 @@
 
 class OpenGLApplication
 {
+	GLboolean shouldBeClosed = GL_FALSE;
+
 public:
 
 	OpenGLApplication() = default;
@@ -26,8 +28,4 @@ public:
 	void setApplicationShouldClose(GLboolean val);
 
 	~OpenGLApplication();
-
-private:
-
-	GLboolean shouldBeClosed = GL_FALSE;
 };

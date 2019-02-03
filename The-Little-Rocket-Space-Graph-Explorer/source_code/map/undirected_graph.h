@@ -11,6 +11,13 @@
 */
 class UndirectedGraph
 {
+	std::vector<std::forward_list<int>> graph;
+	const int vertices;
+	int edges;
+
+	void checkVertex(int v) const;
+	void addSelfLoop(int v);
+
 public:
 
 	static int degree(const UndirectedGraph& G, int v);
@@ -35,12 +42,4 @@ public:
 	std::forward_list<int> adj(int v) const;
 
 	~UndirectedGraph() = default;
-private:
-
-	std::vector<std::forward_list<int>> graph;
-	const int vertices;
-	int edges;
-
-	void checkVertex(int v) const;
-	void addSelfLoop(int v);
 };

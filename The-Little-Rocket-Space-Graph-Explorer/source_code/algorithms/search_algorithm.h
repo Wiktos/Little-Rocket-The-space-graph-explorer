@@ -13,6 +13,14 @@
 */
 class SearchAlgorithm 
 {
+	virtual void search(UndirectedGraph* G, int v) const = 0;
+
+protected:
+
+	std::unique_ptr<UndirectedGraph> G;
+	int start;
+	mutable std::vector<int> trace;
+
 public:
 
 	SearchAlgorithm(UndirectedGraph* G, int start);
@@ -24,14 +32,4 @@ public:
 	virtual std::vector<int> traceTo(int v) const = 0;
 
 	virtual ~SearchAlgorithm() = default;
-
-protected:
-
-	std::unique_ptr<UndirectedGraph> G;
-	int start;
-	mutable std::vector<int> trace;
-
-private:
-
-	virtual void search(UndirectedGraph* G, int v) const = 0;
 };

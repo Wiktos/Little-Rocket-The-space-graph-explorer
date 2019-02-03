@@ -11,6 +11,14 @@
 
 class SceneBuilder
 {
+	GLuint width = 800;
+	GLuint height = 600;
+	std::string title = "OpenGL Application";
+	GLFWmonitor* monitor = nullptr;
+	GLFWwindow* share = nullptr;
+	GLFWframebuffersizefun cbfun = nullptr;
+	std::map<GLuint, GLuint> hints = { { GLFW_VERSION_MAJOR, 4 }, {GLFW_VERSION_MINOR, 5} };
+
 public :
 
 	SceneBuilder() = default;
@@ -31,14 +39,4 @@ public :
 	Scene createScene();
 
 	~SceneBuilder() = default;
-
-private:
-
-	GLuint width = 800;
-	GLuint height = 600;
-	std::string title = "OpenGL Application";
-	GLFWmonitor* monitor = nullptr;
-	GLFWwindow* share = nullptr;
-	GLFWframebuffersizefun cbfun = nullptr;
-	std::map<GLuint, GLuint> hints = { { GLFW_VERSION_MAJOR, 4 }, {GLFW_VERSION_MINOR, 5} };
 };

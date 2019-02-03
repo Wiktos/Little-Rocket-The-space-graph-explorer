@@ -11,6 +11,11 @@
 */
 class UndirectedMap : public UndirectedGraph 
 {
+	const int layers;
+	const int nodesInLayer;
+
+	std::function<void(UndirectedMap*, int)> generator;
+
 public:
 	
 	static const int START_NODE_IDX = 0;
@@ -30,11 +35,4 @@ public:
 	void changeGenerator(std::function<void(UndirectedMap*, int)> newGenerator);
 
 	~UndirectedMap() = default;
-
-private:
-
-	const int layers;
-	const int nodesInLayer;
-	
-	std::function<void(UndirectedMap*, int)> generator;
 };

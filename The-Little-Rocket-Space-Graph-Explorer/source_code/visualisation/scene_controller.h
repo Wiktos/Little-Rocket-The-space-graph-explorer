@@ -14,6 +14,9 @@ class SceneController
 	typedef GLuint Key;
 	typedef std::function<void()> CallbackFunction;
 
+	std::map<Key, CallbackFunction> callbacks;
+	GLFWwindow *scene;
+
 public :
 
 	SceneController(GLFWwindow *scene) : scene(scene)
@@ -28,9 +31,4 @@ public :
 	void pollEvents() const;
 
 	~SceneController() = default;
-
-private:
-
-	std::map<Key, CallbackFunction> callbacks;
-	GLFWwindow *scene;
 };

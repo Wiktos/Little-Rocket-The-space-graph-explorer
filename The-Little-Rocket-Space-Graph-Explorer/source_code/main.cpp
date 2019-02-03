@@ -6,11 +6,11 @@
 
 int main(int args, char* argv[]) {
 
-	//checks memory leaks
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
 //#define TESTS_ON
 #ifdef TESTS_ON
+	//checks memory leaks
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	
 	std::cout << "Unit tests : " << __DATE__ << ' ' << __TIME__ << std::endl;
 	ugraph_test::performAllTests();
 	umap_test::performAllTests();
