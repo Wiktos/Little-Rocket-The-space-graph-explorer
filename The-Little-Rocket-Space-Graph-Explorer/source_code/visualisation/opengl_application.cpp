@@ -1,4 +1,4 @@
-#include "openglapplication.h"
+#include "opengl_application.h"
 
 void OpenGLApplication::initGLFW() {
 	if (!glfwInit()) {

@@ -1,4 +1,4 @@
-#include "scenebuilder.h"
+#include "scene_builder.h"
 
 void SceneBuilder::setTitle(const std::string title) {
 	this->title = title;

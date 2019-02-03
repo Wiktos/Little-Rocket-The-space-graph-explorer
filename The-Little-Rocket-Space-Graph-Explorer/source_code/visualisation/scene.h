@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 
-#include "sceneobject.h"
+#include "scene_object.h"
 #include "color.h"
 
 class Scene
