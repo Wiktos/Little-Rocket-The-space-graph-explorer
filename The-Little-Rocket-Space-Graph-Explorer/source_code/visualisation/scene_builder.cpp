@@ -1,5 +1,9 @@
 #include "scene_builder.h"
 
+SceneBuilder::SceneBuilder(const GLuint width, const GLuint height, std::string title)
+	: width(width), height(height), title(title)
+{}
+
 void SceneBuilder::setTitle(const std::string title) {
 	this->title = title;
 }

@@ -29,9 +29,7 @@ public :
 
 	SceneBuilder() = default;
 	SceneBuilder(const SceneBuilder&) = default;
-	SceneBuilder(const GLuint width, const GLuint height, std::string title) 
-		: width(width), height(height), title(title)
-	{}
+	SceneBuilder(const GLuint width, const GLuint height, std::string title);
 
 	void setTitle(const std::string title);
 	void setWidth(const GLuint width);

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "shader_program.h" 
 
 /*
@@ -18,17 +19,9 @@ protected:
 
 public :
 	
-	SceneObject(const std::string& vertexPath, const std::string& fragmentPath) : shader(vertexPath.c_str(), fragmentPath.c_str())
-	{}
+	SceneObject(const std::string& vertexPath, const std::string& fragmentPath);
 
-	void draw() const {
-		shader.use();
-		drawObject();
-		glUseProgram(0);
-	}
+	void draw() const;
 
-	virtual ~SceneObject() {
-		glDeleteVertexArrays(1, &VAO);
-		glDeleteBuffers(1, &VBO);
-	}
+	virtual ~SceneObject();
 };
