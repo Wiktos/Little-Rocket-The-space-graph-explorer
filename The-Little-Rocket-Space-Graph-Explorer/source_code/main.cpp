@@ -38,8 +38,14 @@ int main(int args, char* argv[]) {
 			app.setApplicationShouldClose(GL_TRUE);
 		});
 
-		GraphNodeView singleNode("source_code/visualisation/shaders/node_vertex.vert", "source_code/visualisation/shaders/node_fragment.frag");
+		GraphNodeView singleNode("source_code/visualisation/shaders/node_vertex.vert",
+			"source_code/visualisation/shaders/node_fragment.frag");
 		mainScene.attachObject(&singleNode);
+
+		GraphEdgeView singleEdge({.5f, .0f, .0f}, { -0.5f, .0f, .0f },
+			"source_code/visualisation/shaders/edge_vertex.vert", 
+			"source_code/visualisation/shaders/edge_fragment.frag");
+		mainScene.attachObject(&singleEdge);
 
 		while (!app.shouldAppBeClosed()) {
 			controller.pollEvents();

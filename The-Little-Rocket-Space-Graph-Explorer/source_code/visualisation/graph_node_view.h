@@ -12,10 +12,10 @@
 */
 class GraphNodeView final : public SceneObject
 {
-	mutable std::vector<Point3D> vertices;
+	std::vector<Point3D> vertices;
 
-	void computeVertecies() const;
-	void setDrawingDependencies() const;
+	void computeVertecies();
+	void setDrawingDependencies();
 	void drawObject() const;
 	
 public:

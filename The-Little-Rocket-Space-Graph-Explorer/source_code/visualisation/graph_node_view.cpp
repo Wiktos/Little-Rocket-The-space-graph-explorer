@@ -6,7 +6,7 @@ GraphNodeView::GraphNodeView(const std::string& vertexPath, const std::string& f
 	setDrawingDependencies();
 }
 
-void GraphNodeView::computeVertecies() const {
+void GraphNodeView::computeVertecies() {
 	float radius = 0.5f;
 
 	for (int i = 0; i < 360; i++) {
@@ -17,7 +17,7 @@ void GraphNodeView::computeVertecies() const {
 	}
 }
 
-void GraphNodeView::setDrawingDependencies() const {
+void GraphNodeView::setDrawingDependencies() {
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 
