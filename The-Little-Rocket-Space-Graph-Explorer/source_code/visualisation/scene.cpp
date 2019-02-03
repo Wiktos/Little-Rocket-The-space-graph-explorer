@@ -15,8 +15,8 @@ void Scene::clearColor(const Color& col) const {
 }
 
 void Scene::drawObjects() const {
-	for (unsigned int i = 0; i < objects.size(); i++) {
-		objects[i]->draw();
+	for (auto obj : objects) {
+		obj->draw();
 	}
 }
 

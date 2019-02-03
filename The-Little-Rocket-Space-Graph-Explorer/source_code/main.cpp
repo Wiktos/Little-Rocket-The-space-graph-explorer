@@ -17,7 +17,7 @@ int main(int args, char* argv[]) {
 	dfs_test::testSearching();
 #endif // TESTS_ON
 
-	try	{
+	try {
 		OpenGLApplication::initGLFW();
 
 		SceneBuilder builder;
@@ -40,6 +40,7 @@ int main(int args, char* argv[]) {
 
 		GraphNodeView singleNode("source_code/visualisation/shaders/node_vertex.vert",
 			"source_code/visualisation/shaders/node_fragment.frag");
+		singleNode.rotate(85.f, glm::vec3(1.f, 0.f, 0.f));
 		mainScene.attachObject(&singleNode);
 
 		GraphEdgeView singleEdge({.5f, .0f, .0f}, { -0.5f, .0f, .0f },
