@@ -4,6 +4,11 @@
 
 #include "camera_view_vectors.h"
 
+/*
+	Camera class represents camera of OpenGL application.
+
+	by Wiktor £azarski
+*/
 class Camera
 {
 	CameraViewVectors viewVectors;

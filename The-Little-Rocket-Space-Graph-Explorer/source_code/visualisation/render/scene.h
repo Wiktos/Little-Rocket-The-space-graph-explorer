@@ -28,6 +28,7 @@ public :
 	
 	Scene(const Scene&) = default;
 	Scene(Scene&&) = default;
+
 	Scene& operator=(const Scene&) = delete;
 	Scene& operator=(Scene&&) = delete;
 

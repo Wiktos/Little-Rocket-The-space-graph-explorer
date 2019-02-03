@@ -20,6 +20,11 @@ class ShaderProgram
 public:
 
 	ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath);
+	ShaderProgram(const ShaderProgram&) = default;
+	ShaderProgram(ShaderProgram&&) = default;
+
+	ShaderProgram& operator=(const ShaderProgram&) = default;
+	ShaderProgram& operator=(ShaderProgram&&) = default;
 
 	void use() const {
 		glUseProgram(getProgramID());
@@ -76,4 +81,6 @@ public:
 	void setMat4(const std::string &name, const glm::mat4 &mat) const {
 		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 	}
+
+	~ShaderProgram() = default;
 };

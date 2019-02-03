@@ -24,6 +24,8 @@ public:
 
 	OpenGLApplication() = default;
 	OpenGLApplication(const OpenGLApplication&) = default;
+	OpenGLApplication(OpenGLApplication&&) = default;
+
 	OpenGLApplication& operator=(const OpenGLApplication&) = default;
 	OpenGLApplication& operator=(OpenGLApplication&&) = default;
 

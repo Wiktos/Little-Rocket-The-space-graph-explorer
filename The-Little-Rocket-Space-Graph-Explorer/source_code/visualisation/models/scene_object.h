@@ -27,6 +27,11 @@ protected:
 public :
 	
 	SceneObject(const std::string& vertexPath, const std::string& fragmentPath);
+	SceneObject(const SceneObject&) = default;
+	SceneObject(SceneObject&&) = default;
+
+	SceneObject& operator=(const SceneObject&) = default;
+	SceneObject& operator=(SceneObject&&) = default;
 
 	void draw() const;
 	void rotate(float angle, glm::vec3 axis);
