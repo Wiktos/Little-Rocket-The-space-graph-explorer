@@ -3,6 +3,11 @@
 #include "scene_object.h"
 #include "point3D.h"
 
+/*
+	GraphNodeView class represents view of one edge that connects nodes of graph in OpenGL application.
+
+	by Wiktor £azarski
+*/
 class GraphEdgeView final : public SceneObject
 {
 	static const short START_POINT_IDX = 0;
