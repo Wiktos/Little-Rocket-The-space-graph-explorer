@@ -4,7 +4,7 @@
 #include "point3D.h"
 
 /*
-	GraphNodeView class represents view of one edge that connects nodes of graph in OpenGL application.
+	GraphEdgeView class represents view of one edge that connects nodes of graph in OpenGL application.
 
 	by Wiktor £azarski
 */
