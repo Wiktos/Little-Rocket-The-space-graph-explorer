@@ -19,13 +19,13 @@ class OpenGLApplication
 
 public:
 
+	static void initGLFW();
+	static void initGLEW();
+
 	OpenGLApplication() = default;
 	OpenGLApplication(const OpenGLApplication&) = default;
 	OpenGLApplication& operator=(const OpenGLApplication&) = default;
 	OpenGLApplication& operator=(OpenGLApplication&&) = default;
-	
-	static void initGLFW();
-	static void initGLEW();
 
 	void makeContextCurrent(Scene& scene);
 

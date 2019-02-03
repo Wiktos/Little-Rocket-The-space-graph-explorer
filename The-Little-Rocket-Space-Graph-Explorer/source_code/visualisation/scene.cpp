@@ -15,15 +15,20 @@ void Scene::clearColor(const Color& col) const {
 }
 
 void Scene::drawObjects() const {
+	float aspect = width / static_cast<GLfloat>(height);
 	for (auto obj : objects) {
+		obj->setViewMatrix(camera.getViewMatrix());
+		obj->setProjectionMatrix(glm::perspective(glm::radians(45.f), aspect, 0.1f, 100.f));
 		obj->draw();
 	}
 }
 
 void Scene::clearBuffers(std::vector<GLenum> buffers) const {
+	glEnable(GL_DEPTH_TEST);
 	for (auto buf : buffers) {
 		glClear(buf);
 	}
+	glEnable(0);
 }
 
 void Scene::swapBuffers() const {
@@ -32,4 +37,8 @@ void Scene::swapBuffers() const {
 
 void Scene::attachObject(SceneObject* object) {
 	objects.push_back(object);
+}
+
+void Scene::attachCamera(const Camera& camera) {
+	this->camera = camera;
 }

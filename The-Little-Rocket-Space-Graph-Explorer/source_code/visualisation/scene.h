@@ -16,14 +16,17 @@ class Scene
 	friend class SceneBuilder;
 
 	GLFWwindow *window;
+	GLuint width, height;
+	Camera camera;
 	std::vector<SceneObject*> objects;
 
-	Scene(GLFWwindow *window) : window(window)
+	Scene(GLFWwindow *window, GLuint width, GLuint height) : window(window), width(width), height(height) 
 	{}
 
 public :
 	
 	Scene(const Scene&) = default;
+	Scene(Scene&&) = default;
 	Scene& operator=(const Scene&) = delete;
 	Scene& operator=(Scene&&) = delete;
 
@@ -35,6 +38,7 @@ public :
 	void swapBuffers() const;
 
 	void attachObject(SceneObject* object);
+	void attachCamera(const Camera& camera);
 
 	~Scene() = default;
 };

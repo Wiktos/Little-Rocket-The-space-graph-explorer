@@ -1,16 +1,16 @@
 #ifdef _WIN32
-	#define GLEW_STATIC  
+#define GLEW_STATIC  
 #endif
 
 #include <main_include.h>
 
 int main(int args, char* argv[]) {
 
-//#define TESTS_ON
+	//#define TESTS_ON
 #ifdef TESTS_ON
 	//checks memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	
+
 	std::cout << "Unit tests : " << __DATE__ << ' ' << __TIME__ << std::endl;
 	ugraph_test::performAllTests();
 	umap_test::performAllTests();
@@ -23,7 +23,7 @@ int main(int args, char* argv[]) {
 		SceneBuilder builder;
 		builder.addSceneHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
 		builder.setTitle("The Little Rocket - The Space Graph Explorer");
-		builder.setFramebufferSizeCallback([](GLFWwindow*, int w, int h)->void{
+		builder.setFramebufferSizeCallback([](GLFWwindow*, int w, int h)->void {
 			glViewport(0, 0, w, h);
 		});
 
@@ -40,19 +40,22 @@ int main(int args, char* argv[]) {
 
 		GraphNodeView singleNode("source_code/visualisation/shaders/node_vertex.vert",
 			"source_code/visualisation/shaders/node_fragment.frag");
-		singleNode.rotate(85.f, glm::vec3(1.f, 0.f, 0.f));
+		singleNode.rotate(-55.f, glm::vec3(1.f, 0.f, 0.f));
 		mainScene.attachObject(&singleNode);
 
-		GraphEdgeView singleEdge({.5f, .0f, .0f}, { -0.5f, .0f, .0f },
-			"source_code/visualisation/shaders/edge_vertex.vert", 
+		GraphEdgeView singleEdge({ .5f, .0f, .0f }, { -0.5f, .0f, .0f },
+			"source_code/visualisation/shaders/edge_vertex.vert",
 			"source_code/visualisation/shaders/edge_fragment.frag");
 		mainScene.attachObject(&singleEdge);
+
+		Camera cam({ { 0.f, 0.f, 8.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
+		mainScene.attachCamera(cam);
 
 		while (!app.shouldAppBeClosed()) {
 			controller.pollEvents();
 
 			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });
-			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT });
+			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT });
 
 			mainScene.drawObjects();
 

@@ -47,5 +47,5 @@ Scene SceneBuilder::createScene() {
 		glfwSetFramebufferSizeCallback(scenePtr, cbfun);
 	}
 
-	return Scene(scenePtr);
+	return Scene(scenePtr, width, height);
 }
