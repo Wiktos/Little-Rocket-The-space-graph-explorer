@@ -6,6 +6,11 @@
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
 
+/*
+	Color struct represents color in RGBA format.
+
+	by Wiktor £azarski
+*/
 struct Color
 {
 	GLfloat r;

@@ -38,7 +38,7 @@ int main(int args, char* argv[]) {
 			app.setApplicationShouldClose(GL_TRUE);
 		});
 
-		GraphNode singleNode("source_code/visualisation/shaders/node_vertex.vert", "source_code/visualisation/shaders/node_fragment.frag");
+		GraphNodeView singleNode("source_code/visualisation/shaders/node_vertex.vert", "source_code/visualisation/shaders/node_fragment.frag");
 		mainScene.attachObject(&singleNode);
 
 		while (!app.shouldAppBeClosed()) {

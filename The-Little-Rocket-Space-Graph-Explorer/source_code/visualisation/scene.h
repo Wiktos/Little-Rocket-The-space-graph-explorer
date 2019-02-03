@@ -6,6 +6,11 @@
 #include "scene_object.h"
 #include "color.h"
 
+/*
+	Scene class represents render window of OpenGL application.
+
+	by Wiktor £azarski
+*/
 class Scene
 {
 	friend class SceneBuilder;

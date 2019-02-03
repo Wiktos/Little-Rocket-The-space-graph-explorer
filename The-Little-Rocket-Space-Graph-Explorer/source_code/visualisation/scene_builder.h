@@ -9,6 +9,12 @@
 #include <map>
 #include "scene.h"
 
+/*
+	SceneBuilder class is responsible for building Scene object. Provides possibility to set diffrent creation option before calling createScene() method.
+	To see default option of Scene that will be created without any settings see below in the private section of class.
+
+	by Wiktor £azarski
+*/
 class SceneBuilder
 {
 	GLuint width = 800;

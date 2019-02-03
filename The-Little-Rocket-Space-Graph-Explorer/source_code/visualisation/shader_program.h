@@ -6,6 +6,12 @@
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
 
+/*
+	ShaderProgram class is responsible for loading shaders codes from files, compiling and linking shaders.
+	Provides also managment of using shader program in OpenGL application.
+
+	by Wiktor £azarski
+*/
 class ShaderProgram
 {
 	GLuint ID;

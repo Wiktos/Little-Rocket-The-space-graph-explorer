@@ -8,6 +8,11 @@
 #include <iostream>
 #include "scene.h"
 
+/*
+	OpenGLApplication class provides management of OpenGL application, it's extensions and every other external libs that can be used in application.
+
+	by Wiktor £azarski
+*/
 class OpenGLApplication
 {
 	GLboolean shouldBeClosed = GL_FALSE;

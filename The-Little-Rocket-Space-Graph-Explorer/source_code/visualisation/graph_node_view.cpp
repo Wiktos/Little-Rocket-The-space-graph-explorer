@@ -1,11 +1,12 @@
-#include "graph_node.h"
+#include <math.h>
+#include "graph_node_view.h"
 
-GraphNode::GraphNode(const std::string& vertexPath, const std::string& fragmentPath) : SceneObject(vertexPath, fragmentPath) {
+GraphNodeView::GraphNodeView(const std::string& vertexPath, const std::string& fragmentPath) : SceneObject(vertexPath, fragmentPath) {
 	computeVertecies();
 	setDrawingDependencies();
 }
 
-void GraphNode::computeVertecies() const {
+void GraphNodeView::computeVertecies() const {
 	float radius = 0.5f;
 
 	for (int i = 0; i < 360; i++) {
@@ -16,7 +17,7 @@ void GraphNode::computeVertecies() const {
 	}
 }
 
-void GraphNode::setDrawingDependencies() const {
+void GraphNodeView::setDrawingDependencies() const {
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 
@@ -31,7 +32,7 @@ void GraphNode::setDrawingDependencies() const {
 	glBindVertexArray(0);
 }
 
-void GraphNode::drawObject() const {
+void GraphNodeView::drawObject() const {
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_POLYGON, 0, vertices.size());
 	glBindVertexArray(0);
