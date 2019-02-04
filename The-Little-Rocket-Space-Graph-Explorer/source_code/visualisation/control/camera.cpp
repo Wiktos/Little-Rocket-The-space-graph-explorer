@@ -3,14 +3,14 @@
 const float Camera::SPEED_MIN = 0.5f;
 
 void Camera::increaseSpeed() {
-	speed += 1.f;
+	speed += .2f;
 }
 
 void Camera::decreaseSpeed() {
 	if (speed <= SPEED_MIN) {
 		return;
 	}
-	speed -= 1.f;
+	speed -= .2f;
 }
 
 void Camera::moveForward(float delta) {
