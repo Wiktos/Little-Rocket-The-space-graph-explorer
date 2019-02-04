@@ -1,5 +1,5 @@
 #ifdef _WIN32
-	#define GLEW_STATIC
+#define GLEW_STATIC
 #endif
 
 #include <GL/glew.h>
@@ -35,8 +35,14 @@ void Scene::swapBuffers() const {
 	glfwSwapBuffers(window);
 }
 
-void Scene::attachObject(SceneObject* object) {
+void Scene::attachObject(std::shared_ptr<SceneObject> object) {
 	objects.push_back(object);
+}
+
+void Scene::attachObjects(std::vector<std::shared_ptr<SceneObject>> objects) {
+	for (auto obj : objects) {
+		this->objects.push_back(obj);
+	}
 }
 
 void Scene::attachCamera(const Camera& camera) {

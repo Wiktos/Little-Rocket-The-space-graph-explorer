@@ -19,7 +19,7 @@ class Scene
 	GLFWwindow *window;
 	GLuint width, height;
 	Camera camera;
-	std::vector<SceneObject*> objects;
+	std::vector<std::shared_ptr<SceneObject>> objects;
 
 	Scene(GLFWwindow *window, GLuint width, GLuint height) : window(window), width(width), height(height) 
 	{}
@@ -39,7 +39,8 @@ public :
 	void clearBuffers(std::vector<GLenum> buffers) const;
 	void swapBuffers() const;
 
-	void attachObject(SceneObject* object);
+	void attachObject(std::shared_ptr<SceneObject> object);
+	void attachObjects(std::vector<std::shared_ptr<SceneObject>> objects);
 	void attachCamera(const Camera& camera);
 
 	~Scene() = default;
