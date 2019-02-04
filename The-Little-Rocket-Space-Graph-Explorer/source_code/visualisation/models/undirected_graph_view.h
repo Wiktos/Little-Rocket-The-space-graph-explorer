@@ -6,7 +6,11 @@
 #include "graph_node_view.h"
 #include "graph_edge_view.h"
 
+/*
+	UndirectedMapView class represents UndirectedMap in the OpenGL render Scene.
 
+	by Wiktor £azarski
+*/
 class UndirectedMapView final : public ComplexSceneObject
 {
 	static const int Y = 0;
