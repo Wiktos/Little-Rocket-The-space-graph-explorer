@@ -35,7 +35,7 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMapView mapView({ 6, 6 });
+		UndirectedMapView mapView({ 3, 1 });
 		mainScene.attachObjects(mapView.getObjects());
 
 		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });

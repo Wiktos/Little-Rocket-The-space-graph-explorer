@@ -14,8 +14,8 @@
 class UndirectedMapView final : public ComplexSceneObject
 {
 	static const int Y = 0;
-	static const int DISTANCE_BETWEEN_LAYERS = 4;
-	static const int DISTANCE_BETWEEN_NODES = 4;
+	static const int DISTANCE_BETWEEN_LAYERS = 5;
+	static const int DISTANCE_BETWEEN_NODES = 5;
 
 	std::vector<glm::vec3> positions;
 

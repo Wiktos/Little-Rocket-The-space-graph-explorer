@@ -8,7 +8,7 @@ UndirectedMap::UndirectedMap(int layers, int nodesInLayer) : UndirectedGraph(lay
 	}
 
 	generator = StandardUndirectedMapGenerator();
-	generator(this, 1);
+	generator(this, 2);
 }
 
 int UndirectedMap::layersNum() const {

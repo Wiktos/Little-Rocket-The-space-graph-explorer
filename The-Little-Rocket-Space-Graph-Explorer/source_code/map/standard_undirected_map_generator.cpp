@@ -39,14 +39,14 @@ void connectLayers(int layers, int nodesInLayer, int layersConnection, Undirecte
 
 void connectStartingNode(int nodesInLayer, UndirectedMap* const map) {
 	uniformDistribution = std::uniform_int_distribution<int>(1, nodesInLayer);
-	for (int i = 1; i < nodesInLayer; i++) {
+	for (int i = 0; i < nodesInLayer; i++) {
 		map->addEdge(UndirectedMap::START_NODE_IDX, uniformDistribution(engine));
 	}
 }
 
 void connectLastNode(int nodesInLayer, UndirectedMap* const map) {
 	uniformDistribution = std::uniform_int_distribution<int>(map->V() - 1 - nodesInLayer, map->END_NODE_IDX - 1);
-	for (int i = 1; i < nodesInLayer; i++) {
+	for (int i = 0; i < nodesInLayer; i++) {
 		map->addEdge(map->END_NODE_IDX, uniformDistribution(engine));
 	}
 }
