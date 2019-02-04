@@ -1,12 +1,12 @@
 #ifdef _WIN32
-#define GLEW_STATIC  
+	#define GLEW_STATIC  
 #endif
 
 #include <main_include.h>
 
 int main(int args, char* argv[]) {
 
-	#define TESTS_ON
+	//#define TESTS_ON
 #ifdef TESTS_ON
 	//checks memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -38,11 +38,11 @@ int main(int args, char* argv[]) {
 			app.setApplicationShouldClose(GL_TRUE);
 		});
 
-		UndirectedMapView mapView({ 3, 6 });
+		UndirectedMapView mapView({ 6, 6 });
 		mainScene.attachObjects(mapView.getObjects());
 
-		Camera cam({ { 0.f, 1.8f, 8.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
-		mainScene.attachCamera(cam); 
+		Camera cam({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
+		mainScene.attachCamera(cam);
 
 		while (!app.shouldAppBeClosed()) {
 			controller.pollEvents();

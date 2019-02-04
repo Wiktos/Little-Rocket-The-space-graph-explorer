@@ -7,8 +7,7 @@
 #include "../source_code/visualisation/render/opengl_application.h"
 #include "../source_code/visualisation/render/scene_builder.h"
 #include "../source_code/visualisation/control/scene_controller.h"
-#include "../source_code/visualisation/models/graph_node_view.h"
-#include "../source_code/visualisation/models/graph_edge_view.h"
+#include "../source_code/visualisation/models/undirected_graph_view.h"
 
 #include "../tests/map/undirectedgraph_tests.h"
 #include "../tests/map/undirected_map_tests.h"
