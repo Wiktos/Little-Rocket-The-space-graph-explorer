@@ -23,6 +23,8 @@ int main(int args, char* argv[]) {
 		SceneBuilder builder;
 		builder.addSceneHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
 		builder.setTitle("The Little Rocket - Space Graph Explorer");
+		builder.setWidth(1200);
+		builder.setHeight(800);
 		builder.setFramebufferSizeCallback([](GLFWwindow*, int w, int h)->void {
 			glViewport(0, 0, w, h);
 		});
@@ -33,18 +35,45 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
+		UndirectedMapView mapView({ 6, 6 });
+		mainScene.attachObjects(mapView.getObjects());
+
+		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
+		mainScene.attachCamera(std::make_shared<Camera>(camera));
+
 		SceneController controller(&mainScene);
 		controller.registerControlMethod(GLFW_KEY_ESCAPE, [&app]() {
 			app.setApplicationShouldClose(GL_TRUE);
 		});
-
-		UndirectedMapView mapView({ 6, 6 });
-		mainScene.attachObjects(mapView.getObjects());
-
-		Camera cam({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
-		mainScene.attachCamera(cam);
+		controller.registerControlMethod(GLFW_KEY_W, [&]() {
+			auto cam = mainScene.getCamera();
+			GLfloat delta = app.delta();
+			cam->moveForward(delta);
+		});
+		controller.registerControlMethod(GLFW_KEY_S, [&]() {
+			auto cam = mainScene.getCamera();
+			GLfloat delta = app.delta();
+			cam->moveBackward(delta);
+		});
+		controller.registerControlMethod(GLFW_KEY_A, [&]() {
+			auto cam = mainScene.getCamera();
+			GLfloat delta = app.delta();
+			cam->moveLeft(delta);
+		});
+		controller.registerControlMethod(GLFW_KEY_D, [&]() {
+			auto cam = mainScene.getCamera();
+			GLfloat delta = app.delta();
+			cam->moveRight(delta);
+		});
+		controller.registerControlMethod(GLFW_KEY_UP, [&]() {
+			mainScene.getCamera()->increaseSpeed();
+		});
+		controller.registerControlMethod(GLFW_KEY_DOWN, [&]() {
+			mainScene.getCamera()->decreaseSpeed();
+		});
 
 		while (!app.shouldAppBeClosed()) {
+			app.updateDeltaTime();
 			controller.pollEvents();
 
 			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });

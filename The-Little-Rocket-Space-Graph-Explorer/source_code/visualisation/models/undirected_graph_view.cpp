@@ -12,6 +12,7 @@ void UndirectedMapView::drawStartNode() {
 	std::shared_ptr<GraphNodeView> startNode(new GraphNodeView(GRAPH_NODE_VERTEX_SHADER_PATH, GRAPH_NODE_FRAGMENT_SHADER_PATH));
 
 	startNode->rotate(-90.f, glm::vec3(1.f, 0.f, 0.f));
+	startNode->scale(glm::vec3(2.f, 2.f, 2.f));
 
 	pushBackObject(startNode);
 	positions.push_back(glm::vec3(0.f, 0.f, 0.f));
@@ -29,6 +30,7 @@ void UndirectedMapView::drawInnerLayersNodes(const UndirectedMap& G) {
 
 			node->translate(glm::vec3(x, Y, z));
 			node->rotate(-90.f, glm::vec3(1.f, 0.f, 0.f));
+			node->scale(glm::vec3(2.f, 2.f, 2.f));
 
 			pushBackObject(node);
 			positions.push_back(glm::vec3(x, Y, z));
@@ -44,6 +46,7 @@ void UndirectedMapView::drawEndNode(int layersNum) {
 
 	endNode->translate(glm::vec3(endX, Y, endZ));
 	endNode->rotate(-90.f, glm::vec3(1.f, 0.f, 0.f));
+	endNode->scale(glm::vec3(2.f, 2.f, 2.f));
 
 	pushBackObject(endNode);
 	positions.push_back(glm::vec3(endX, Y, endZ));

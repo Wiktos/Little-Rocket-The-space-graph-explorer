@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+#include <iostream>
 #include "camera_view_vectors.h"
 
 /*
@@ -11,7 +11,10 @@
 */
 class Camera
 {
+	static const float SPEED_MIN;
+
 	CameraViewVectors viewVectors;
+	float speed = 1.5f;
 
 public:
 
@@ -28,6 +31,15 @@ public:
 	glm::mat4 getViewMatrix() const {
 		return glm::lookAt(viewVectors.cameraPos, viewVectors.cameraPos + viewVectors.cameraFront, viewVectors.cameraUp);
 	}
+
+	float getSpeed() { return speed; }
+	void increaseSpeed();
+	void decreaseSpeed();
+
+	void moveForward(float delta);
+	void moveBackward(float delta);
+	void moveLeft(float delta);
+	void moveRight(float delta);
 
 	~Camera() = default;
 };
