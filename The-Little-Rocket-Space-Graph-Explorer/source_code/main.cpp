@@ -22,7 +22,7 @@ int main(int args, char* argv[]) {
 
 		SceneBuilder builder;
 		builder.addSceneHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
-		builder.setTitle("The Little Rocket - The Space Graph Explorer");
+		builder.setTitle("The Little Rocket - Space Graph Explorer");
 		builder.setFramebufferSizeCallback([](GLFWwindow*, int w, int h)->void {
 			glViewport(0, 0, w, h);
 		});

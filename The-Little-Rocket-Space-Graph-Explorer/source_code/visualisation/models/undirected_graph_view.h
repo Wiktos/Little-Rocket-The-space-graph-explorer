@@ -9,16 +9,16 @@
 
 class UndirectedMapView final : public ComplexSceneObject
 {
-
 	static const int Y = 0;
 	static const int DISTANCE_BETWEEN_LAYERS = 4;
 	static const int DISTANCE_BETWEEN_NODES = 4;
 
 	std::vector<glm::vec3> positions;
 
-	void setUpStartNode();
-	void setUpInnerLayers(const UndirectedMap& G);
-	void setUpEndNode(int layersNum);
+	void drawStartNode();
+	void drawInnerLayersNodes(const UndirectedMap& G);
+	void drawEndNode(int layersNum);
+	void drawEdges(const UndirectedMap& G);
 
 public:
 
