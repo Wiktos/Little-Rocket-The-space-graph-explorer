@@ -16,7 +16,7 @@ class GraphEdgeView final : public SceneObject
 
 	void setDrawingDependencies();
 
-	void drawObject() const;
+	void drawObject() const override;
 
 public :
 

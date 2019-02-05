@@ -19,10 +19,10 @@ class UndirectedMapView final : public ComplexSceneObject
 
 	std::vector<glm::vec3> positions;
 
-	void drawStartNode();
-	void drawInnerLayersNodes(const UndirectedMap& G);
-	void drawEndNode(int layersNum);
-	void drawEdges(const UndirectedMap& G);
+	void setStartNode();
+	void setInnerLayersNodes(const UndirectedMap& G);
+	void setEndNode(int layersNum);
+	void setEdges(const UndirectedMap& G);
 
 public:
 

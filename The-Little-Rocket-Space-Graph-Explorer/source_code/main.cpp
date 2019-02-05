@@ -3,11 +3,11 @@
 #endif
 
 #include <main_includes.h>
-#include "visualisation/models/mesh.h"
+#include "visualisation/models/model.h"
 
 int main(int args, char* argv[]) {
 
-	#define TESTS_ON
+	//#define TESTS_ON
 #ifdef TESTS_ON
 	//checks memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);

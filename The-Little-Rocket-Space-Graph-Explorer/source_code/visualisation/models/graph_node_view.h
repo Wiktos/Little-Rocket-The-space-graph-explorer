@@ -16,7 +16,7 @@ class GraphNodeView final : public SceneObject
 
 	void computeVertecies();
 	void setDrawingDependencies();
-	void drawObject() const;
+	void drawObject() const override;
 	
 public:
 

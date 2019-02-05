@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{0C701D91-7DBB-44C5-8448-2BCDCC9BBFAA}</ProjectGuid>
+    <RootNamespace>TheLittleRocketSpaceGraphExplorer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>.\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\dll;.\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>.\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\dll;.\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>.\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>.\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>assimp-vc140-mt.lib;assimp-vc140-mtr.lib;opengl32.lib;glfw3.lib;glew32s.lib;soil.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;soil.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>assimp-vc140-mt.lib;assimp-vc140-mtr.lib;opengl32.lib;glfw3.lib;glew32s.lib;soil.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;soil.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="source_code\algorithms\depth_first_search.cpp" />
+    <ClCompile Include="source_code\algorithms\search_algorithm.cpp" />
+    <ClCompile Include="source_code\main.cpp" />
+    <ClCompile Include="source_code\map\standard_undirected_map_generator.cpp" />
+    <ClCompile Include="source_code\map\undirected_graph.cpp" />
+    <ClCompile Include="source_code\map\undirected_map.cpp" />
+    <ClCompile Include="source_code\visualisation\control\camera.cpp" />
+    <ClCompile Include="source_code\visualisation\control\scene_controller.cpp" />
+    <ClCompile Include="source_code\visualisation\models\complex_scene_object.cpp" />
+    <ClCompile Include="source_code\visualisation\models\graph_edge_view.cpp" />
+    <ClCompile Include="source_code\visualisation\models\graph_node_view.cpp" />
+    <ClCompile Include="source_code\visualisation\models\mesh.cpp" />
+    <ClCompile Include="source_code\visualisation\models\model.cpp" />
+    <ClCompile Include="source_code\visualisation\models\scene_object.cpp" />
+    <ClCompile Include="source_code\visualisation\models\shader_program.cpp" />
+    <ClCompile Include="source_code\visualisation\models\undirected_graph_view.cpp" />
+    <ClCompile Include="source_code\visualisation\render\opengl_application.cpp" />
+    <ClCompile Include="source_code\visualisation\render\scene.cpp" />
+    <ClCompile Include="source_code\visualisation\render\scene_builder.cpp" />
+    <ClCompile Include="tests\map\undirectedgraph_tests.cpp" />
+    <ClCompile Include="tests\map\undirected_map_tests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\main_includes.h" />
+    <ClInclude Include="include\paths.h" />
+    <ClInclude Include="source_code\algorithms\depth_first_search.h" />
+    <ClInclude Include="source_code\algorithms\search_algorithm.h" />
+    <ClInclude Include="source_code\map\standard_undirected_map_generator.h" />
+    <ClInclude Include="source_code\map\undirected_graph.h" />
+    <ClInclude Include="source_code\map\undirected_map.h" />
+    <ClInclude Include="source_code\visualisation\control\camera.h" />
+    <ClInclude Include="source_code\visualisation\control\camera_view_vectors.h" />
+    <ClInclude Include="source_code\visualisation\control\scene_controller.h" />
+    <ClInclude Include="source_code\visualisation\models\complex_scene_object.h" />
+    <ClInclude Include="source_code\visualisation\models\graph_edge_view.h" />
+    <ClInclude Include="source_code\visualisation\models\graph_node_view.h" />
+    <ClInclude Include="source_code\visualisation\models\mesh.h" />
+    <ClInclude Include="source_code\visualisation\models\model.h" />
+    <ClInclude Include="source_code\visualisation\models\point3D.h" />
+    <ClInclude Include="source_code\visualisation\models\scene_object.h" />
+    <ClInclude Include="source_code\visualisation\models\shader_program.h" />
+    <ClInclude Include="source_code\visualisation\models\undirected_graph_view.h" />
+    <ClInclude Include="source_code\visualisation\render\color.h" />
+    <ClInclude Include="source_code\visualisation\render\opengl_application.h" />
+    <ClInclude Include="source_code\visualisation\render\scene.h" />
+    <ClInclude Include="source_code\visualisation\render\scene_builder.h" />
+    <ClInclude Include="tests\algorithms\dfs_test.h" />
+    <ClInclude Include="tests\error_messenger.h" />
+    <ClInclude Include="tests\map\undirectedgraph_tests.h" />
+    <ClInclude Include="tests\map\undirected_map_tests.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source_code\visualisation\shaders\edge_fragment.frag" />
+    <None Include="source_code\visualisation\shaders\edge_vertex.vert" />
+    <None Include="source_code\visualisation\shaders\node_fragment.frag" />
+    <None Include="source_code\visualisation\shaders\node_vertex.vert" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

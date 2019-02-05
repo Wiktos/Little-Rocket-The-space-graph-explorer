@@ -25,18 +25,18 @@ void Mesh::setupDrawingDependencies()
 
 	// vertex positions
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<GLvoid*>(0));
 	// vertex normals
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<GLvoid*>(offsetof(Vertex, normal)));
 	// vertex texture coords
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCoords));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<GLvoid*>(offsetof(Vertex, texCoords)));
 
 	glBindVertexArray(0);
 }
 
-void Mesh::drawObject()
+void Mesh::drawObject() const
 {
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
@@ -53,7 +53,7 @@ void Mesh::drawObject()
 			number = std::to_string(specularNr++);
 		}
 
-		shader.setFloat(("material." + name + number).c_str(), i);
+		shader.setFloat(("material." + name + number).c_str(), static_cast<float>(i));
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 	}
 
