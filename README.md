@@ -3,7 +3,7 @@ The works on project are underway.
 
 ## Current work status 
 Up to now, application can randomly generates and displays map. 
-![alt text](https://6wbr3a.db.files.1drv.com/y4mJgBaVE0-C27uQ0bD6Ghc_C6qz9T6OldWvd2gPaULSu1u9ENLXYqaBIfembx2_qBJonSa1jE0iaG6HbsbThskuCjx8PtBC8fEU9OVDN5pa-y37ZSvaWdEf0_dLfd1zSdDtYAPlE-wIHy1CtwZiCHUGrpJoTReTxnZaSpt7osOGnTY05jAZKIgMJvnEtHFv2oT4_5sB72JvDCQwZS8joI-eg/overview.gif?download&psid=1)
+![alt text](https://db3pap002files.storage.live.com/y4me3ubEkCCNf_-mIpaqO8GKBCtX6TeCqQyXG778i4Qj8gmOIIPu07D4CJrramP0M5eFIBMtS6PKEmUI5WJoIly2q7HXVnyzJ8_IghRA2_vA94qdfNG9fYUujOBjhYgpitMRQo6YcWPIyFGAhQB1Jc4GTfFSgNFmJsQP4qSsxLo3KM9eC0E6Z6SZ0euSsE7Cs2e20Xx8OprU-JuFfPixH58FQ/current.jpg?psid=1&width=943&height=653)
 
 ## Current TODO List 
 1) *Camera Movement* - DONE
