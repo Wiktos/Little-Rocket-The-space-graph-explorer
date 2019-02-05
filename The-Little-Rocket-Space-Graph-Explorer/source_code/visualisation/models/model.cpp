@@ -1,8 +1,12 @@
 #include <iostream>
-#include <GL\glew.h>
-#include <SOIL.h>
+#include <GL/glew.h>
+#include <SOIL2/SOIL2.h>
 
 #include "model.h"
+
+Model::Model(std::string const &path, const std::string& vertexPath, const std::string& fragmentPath) : vertexShaderCodePath(vertexPath), fragmentShaderCodePath(fragmentPath) {
+	loadModel(path);
+}
 
 void Model::loadModel(std::string const &path) {
 	Assimp::Importer importer;
@@ -143,15 +147,14 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType 
 }
 unsigned int Model::textureFromFile(const char *path, const std::string &directory)
 {
-	std::string filename = directory + std::string(path);
+	std::string filename = directory + '/' + std::string(path);
 
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
 
 	int width, height, nrComponents;
 	unsigned char *data = SOIL_load_image(filename.c_str(), &width, &height, &nrComponents, SOIL_LOAD_RGB);
-	if (data)
-	{
+	if (data) {
 		glBindTexture(GL_TEXTURE_2D, textureID);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
@@ -163,8 +166,7 @@ unsigned int Model::textureFromFile(const char *path, const std::string &directo
 
 		SOIL_free_image_data(data);
 	}
-	else
-	{
+	else {
 		std::cout << "Texture failed to load at path: " << path << std::endl;
 		SOIL_free_image_data(data);
 	}

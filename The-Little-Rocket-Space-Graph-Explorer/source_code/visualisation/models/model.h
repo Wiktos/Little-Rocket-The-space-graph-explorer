@@ -14,9 +14,7 @@ class Model : public ComplexSceneObject
 
 public:
 
-	Model(std::string const &path, const std::string& vertexPath, const std::string& fragmentPath) {
-		loadModel(path);
-	}
+	Model(std::string const &path, const std::string& vertexPath, const std::string& fragmentPath);
 
 	std::weak_ptr<SceneObject> getObject(int idx) = delete;
 	std::vector<std::shared_ptr<SceneObject>> getObject() {

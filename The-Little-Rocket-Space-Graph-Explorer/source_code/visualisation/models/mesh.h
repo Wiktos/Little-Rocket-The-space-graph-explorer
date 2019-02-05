@@ -3,27 +3,11 @@
 	#define GLEW_STATIC
 #endif
 #include <GL\glew.h>
-
-#include <string>
 #include <vector>
 
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
-
 #include "scene_object.h"
-
-struct Vertex {
-	glm::vec3 position;
-	glm::vec3 normal;
-	glm::vec2 texCoords;
-};
-
-struct Texture {
-	aiString path; 
-	unsigned int id;
-	std::string type;
-};
+#include "vertex.h"
+#include "texture.h"
 
 class Mesh : public SceneObject
 {

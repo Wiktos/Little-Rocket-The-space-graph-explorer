@@ -39,6 +39,12 @@ int main(int args, char* argv[]) {
 		UndirectedMapView mapView({ 3, 3 });
 		mainScene.attachObjects(mapView.getObjects());
 
+		Model rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, MODEL_VERTEX_SHADER_PATH, MODEL_FRAGMENT_SHADER_PATH);
+		rocket.rotate(-90.f, glm::vec3(0.0f, 1.0f, 0.0f));
+		rocket.scale(glm::vec3(0.05f, 0.05f, 0.05f));
+		rocket.translate(glm::vec3(-10.0f, -30.0f, 0.0f));  
+		mainScene.attachObjects(rocket.getObject());
+
 		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
 		mainScene.attachCamera(std::make_shared<Camera>(camera));
 
