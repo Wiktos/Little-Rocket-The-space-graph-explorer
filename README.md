@@ -8,4 +8,4 @@ Up to now, application can randomly generates and displays map.
 ## Current TODO List 
 1) *Camera Movement* - DONE
 2) *Enviroment visualisation* : Skybox, Stars as sources of light
-3) *Load and set model on start position* : Zero Node of graph
+3) *Load and set model on start position* : Zero Node of graph - DONE
