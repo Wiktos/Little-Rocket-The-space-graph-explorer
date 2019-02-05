@@ -2,11 +2,12 @@
 	#define GLEW_STATIC  
 #endif
 
-#include <main_include.h>
+#include <main_includes.h>
+#include "visualisation/models/mesh.h"
 
 int main(int args, char* argv[]) {
 
-	//#define TESTS_ON
+	#define TESTS_ON
 #ifdef TESTS_ON
 	//checks memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -35,7 +36,7 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMapView mapView({ 3, 1 });
+		UndirectedMapView mapView({ 3, 3 });
 		mainScene.attachObjects(mapView.getObjects());
 
 		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
@@ -83,7 +84,6 @@ int main(int args, char* argv[]) {
 
 			mainScene.swapBuffers();
 		}
-
 	}
 	catch (const std::runtime_error& ex) {
 		std::cerr << ex.what();

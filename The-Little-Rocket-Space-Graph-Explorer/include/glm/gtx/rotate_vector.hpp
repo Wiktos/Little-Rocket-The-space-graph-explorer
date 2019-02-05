@@ -112,7 +112,7 @@ namespace glm
 	//! From GLM_GTX_rotate_vector extension.
 	template<typename T, qualifier Q>
 	GLM_FUNC_DECL mat<4, 4, T, Q> orientation(
-		vec<3, T, Q> const& Normal,
+		vec<3, T, Q> const& normal,
 		vec<3, T, Q> const& Up);
 
 	/// @}

@@ -28,11 +28,11 @@ namespace glm
 	/// @addtogroup gtx_projection
 	/// @{
 
-	/// Projects x on Normal.
+	/// Projects x on normal.
 	///
 	/// @see gtx_projection
 	template<typename genType>
-	GLM_FUNC_DECL genType proj(genType const& x, genType const& Normal);
+	GLM_FUNC_DECL genType proj(genType const& x, genType const& normal);
 
 	/// @}
 }//namespace glm

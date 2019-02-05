@@ -30,10 +30,10 @@ namespace glm
 	/// @addtogroup gtx_perpendicular
 	/// @{
 
-	//! Projects x a perpendicular axis of Normal.
+	//! Projects x a perpendicular axis of normal.
 	//! From GLM_GTX_perpendicular extension.
 	template<typename genType>
-	GLM_FUNC_DECL genType perp(genType const& x, genType const& Normal);
+	GLM_FUNC_DECL genType perp(genType const& x, genType const& normal);
 
 	/// @}
 }//namespace glm

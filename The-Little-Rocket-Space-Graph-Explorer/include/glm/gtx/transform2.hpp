@@ -56,7 +56,7 @@ namespace glm
 	GLM_FUNC_DECL mat<4, 4, T, Q> shearZ3D(mat<4, 4, T, Q> const& m, T x, T y);
 
 	//template<typename T> GLM_FUNC_QUALIFIER mat<4, 4, T, Q> shear(const mat<4, 4, T, Q> & m, shearPlane, planePoint, angle)
-	// Identity + tan(angle) * cross(Normal, OnPlaneVector)     0
+	// Identity + tan(angle) * cross(normal, OnPlaneVector)     0
 	// - dot(PointOnPlane, normal) * OnPlaneVector              1
 
 	// Reflect functions seem to don't work

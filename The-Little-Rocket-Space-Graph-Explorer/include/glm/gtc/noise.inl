@@ -22,10 +22,10 @@ namespace gtc
 
 	// Classic Perlin noise
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T perlin(vec<2, T, Q> const& Position)
+	GLM_FUNC_QUALIFIER T perlin(vec<2, T, Q> const& position)
 	{
-		vec<4, T, Q> Pi = glm::floor(vec<4, T, Q>(Position.x, Position.y, Position.x, Position.y)) + vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
-		vec<4, T, Q> Pf = glm::fract(vec<4, T, Q>(Position.x, Position.y, Position.x, Position.y)) - vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
+		vec<4, T, Q> Pi = glm::floor(vec<4, T, Q>(position.x, position.y, position.x, position.y)) + vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
+		vec<4, T, Q> Pf = glm::fract(vec<4, T, Q>(position.x, position.y, position.x, position.y)) - vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
 		Pi = mod(Pi, vec<4, T, Q>(289)); // To avoid truncation effects in permutation
 		vec<4, T, Q> ix(Pi.x, Pi.z, Pi.x, Pi.z);
 		vec<4, T, Q> iy(Pi.y, Pi.y, Pi.w, Pi.w);
@@ -63,13 +63,13 @@ namespace gtc
 
 	// Classic Perlin noise
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& Position)
+	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& position)
 	{
-		vec<3, T, Q> Pi0 = floor(Position); // Integer part for indexing
+		vec<3, T, Q> Pi0 = floor(position); // Integer part for indexing
 		vec<3, T, Q> Pi1 = Pi0 + T(1); // Integer part + 1
 		Pi0 = detail::mod289(Pi0);
 		Pi1 = detail::mod289(Pi1);
-		vec<3, T, Q> Pf0 = fract(Position); // Fractional part for interpolation
+		vec<3, T, Q> Pf0 = fract(position); // Fractional part for interpolation
 		vec<3, T, Q> Pf1 = Pf0 - T(1); // Fractional part - 1.0
 		vec<4, T, Q> ix(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy = vec<4, T, Q>(vec<2, T, Q>(Pi0.y), vec<2, T, Q>(Pi1.y));
@@ -207,13 +207,13 @@ namespace gtc
 	*/
 	// Classic Perlin noise
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T perlin(vec<4, T, Q> const& Position)
+	GLM_FUNC_QUALIFIER T perlin(vec<4, T, Q> const& position)
 	{
-		vec<4, T, Q> Pi0 = floor(Position);	// Integer part for indexing
+		vec<4, T, Q> Pi0 = floor(position);	// Integer part for indexing
 		vec<4, T, Q> Pi1 = Pi0 + T(1);		// Integer part + 1
 		Pi0 = mod(Pi0, vec<4, T, Q>(289));
 		Pi1 = mod(Pi1, vec<4, T, Q>(289));
-		vec<4, T, Q> Pf0 = fract(Position);	// Fractional part for interpolation
+		vec<4, T, Q> Pf0 = fract(position);	// Fractional part for interpolation
 		vec<4, T, Q> Pf1 = Pf0 - T(1);		// Fractional part - 1.0
 		vec<4, T, Q> ix(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
@@ -343,10 +343,10 @@ namespace gtc
 
 	// Classic Perlin noise, periodic variant
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T perlin(vec<2, T, Q> const& Position, vec<2, T, Q> const& rep)
+	GLM_FUNC_QUALIFIER T perlin(vec<2, T, Q> const& position, vec<2, T, Q> const& rep)
 	{
-		vec<4, T, Q> Pi = floor(vec<4, T, Q>(Position.x, Position.y, Position.x, Position.y)) + vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
-		vec<4, T, Q> Pf = fract(vec<4, T, Q>(Position.x, Position.y, Position.x, Position.y)) - vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
+		vec<4, T, Q> Pi = floor(vec<4, T, Q>(position.x, position.y, position.x, position.y)) + vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
+		vec<4, T, Q> Pf = fract(vec<4, T, Q>(position.x, position.y, position.x, position.y)) - vec<4, T, Q>(0.0, 0.0, 1.0, 1.0);
 		Pi = mod(Pi, vec<4, T, Q>(rep.x, rep.y, rep.x, rep.y)); // To create noise with explicit period
 		Pi = mod(Pi, vec<4, T, Q>(289)); // To avoid truncation effects in permutation
 		vec<4, T, Q> ix(Pi.x, Pi.z, Pi.x, Pi.z);
@@ -385,13 +385,13 @@ namespace gtc
 
 	// Classic Perlin noise, periodic variant
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& Position, vec<3, T, Q> const& rep)
+	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& position, vec<3, T, Q> const& rep)
 	{
-		vec<3, T, Q> Pi0 = mod(floor(Position), rep); // Integer part, modulo period
+		vec<3, T, Q> Pi0 = mod(floor(position), rep); // Integer part, modulo period
 		vec<3, T, Q> Pi1 = mod(Pi0 + vec<3, T, Q>(T(1)), rep); // Integer part + 1, mod period
 		Pi0 = mod(Pi0, vec<3, T, Q>(289));
 		Pi1 = mod(Pi1, vec<3, T, Q>(289));
-		vec<3, T, Q> Pf0 = fract(Position); // Fractional part for interpolation
+		vec<3, T, Q> Pf0 = fract(position); // Fractional part for interpolation
 		vec<3, T, Q> Pf1 = Pf0 - vec<3, T, Q>(T(1)); // Fractional part - 1.0
 		vec<4, T, Q> ix = vec<4, T, Q>(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy = vec<4, T, Q>(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
@@ -456,11 +456,11 @@ namespace gtc
 
 	// Classic Perlin noise, periodic version
 	template<typename T, qualifier Q>
-	GLM_FUNC_QUALIFIER T perlin(vec<4, T, Q> const& Position, vec<4, T, Q> const& rep)
+	GLM_FUNC_QUALIFIER T perlin(vec<4, T, Q> const& position, vec<4, T, Q> const& rep)
 	{
-		vec<4, T, Q> Pi0 = mod(floor(Position), rep); // Integer part modulo rep
+		vec<4, T, Q> Pi0 = mod(floor(position), rep); // Integer part modulo rep
 		vec<4, T, Q> Pi1 = mod(Pi0 + T(1), rep); // Integer part + 1 mod rep
-		vec<4, T, Q> Pf0 = fract(Position); // Fractional part for interpolation
+		vec<4, T, Q> Pf0 = fract(position); // Fractional part for interpolation
 		vec<4, T, Q> Pf1 = Pf0 - T(1); // Fractional part - 1.0
 		vec<4, T, Q> ix = vec<4, T, Q>(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy = vec<4, T, Q>(Pi0.y, Pi0.y, Pi1.y, Pi1.y);

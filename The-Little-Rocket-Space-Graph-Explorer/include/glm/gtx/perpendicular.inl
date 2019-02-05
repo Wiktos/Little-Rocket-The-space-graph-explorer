@@ -4,8 +4,8 @@
 namespace glm
 {
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType perp(genType const& x, genType const& Normal)
+	GLM_FUNC_QUALIFIER genType perp(genType const& x, genType const& normal)
 	{
-		return x - proj(x, Normal);
+		return x - proj(x, normal);
 	}
 }//namespace glm

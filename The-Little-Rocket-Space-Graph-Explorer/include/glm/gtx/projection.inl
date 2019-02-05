@@ -4,8 +4,8 @@
 namespace glm
 {
 	template<typename genType>
-	GLM_FUNC_QUALIFIER genType proj(genType const& x, genType const& Normal)
+	GLM_FUNC_QUALIFIER genType proj(genType const& x, genType const& normal)
 	{
-		return glm::dot(x, Normal) / glm::dot(Normal, Normal) * Normal;
+		return glm::dot(x, normal) / glm::dot(normal, normal) * normal;
 	}
 }//namespace glm
