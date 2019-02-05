@@ -5,6 +5,12 @@
 #include "mesh.h"
 #include "complex_scene_object.h"
 
+/*
+	Model class represents loaded model. Model is build from Meshes which implement SceneObject therefore it was clear that Model class must implement ComplexSceneObject.
+	To load model assimp library is used.
+
+	by Wiktor £azarski
+*/
 class Model : public ComplexSceneObject
 {
 	std::vector<Texture> textures_loaded;
@@ -15,6 +21,11 @@ class Model : public ComplexSceneObject
 public:
 
 	Model(const std::string& path, const std::string& vertexPath, const std::string& fragmentPath);
+	Model(const Model&) = default;
+	Model(Model&&) = default;
+
+	Model& operator=(const Model&) = default;
+	Model& operator=(Model&&) = default;
 
 	std::weak_ptr<SceneObject> getObject(int idx) = delete;
 	std::vector<std::shared_ptr<SceneObject>> getObject() {

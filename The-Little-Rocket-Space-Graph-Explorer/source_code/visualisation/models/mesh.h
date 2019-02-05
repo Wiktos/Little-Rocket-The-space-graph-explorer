@@ -9,6 +9,11 @@
 #include "vertex.h"
 #include "texture.h"
 
+/*
+	Mesh class represents one mesh of model. The meshes are SceneObjects and are kept in ComplexSceneObject - Model.
+
+	by Wiktor £azarski
+*/
 class Mesh : public SceneObject
 {
 	GLuint EBO;

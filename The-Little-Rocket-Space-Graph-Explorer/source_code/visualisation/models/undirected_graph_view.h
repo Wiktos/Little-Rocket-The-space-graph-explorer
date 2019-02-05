@@ -33,5 +33,7 @@ public:
 	UndirectedMapView& operator=(const UndirectedMapView&) = default;
 	UndirectedMapView& operator=(UndirectedMapView&&) = default;
 
+	glm::vec3 getVertexPosition(int idx) { return positions[idx]; }
+
 	~UndirectedMapView() = default;
 };

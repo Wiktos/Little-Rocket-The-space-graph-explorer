@@ -3,7 +3,6 @@
 #endif
 
 #include <main_includes.h>
-#include "visualisation/models/model.h"
 
 int main(int args, char* argv[]) {
 
@@ -36,13 +35,11 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMapView mapView({ 10, 10 });
+		UndirectedMapView mapView({ 1, 1 });
 		mainScene.attachObjects(mapView.getObjects());
 
-		Model rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, LITTLE_ROCKET_MODEL_VERTEX_SHADER_PATH, LITTLE_ROCKET_MODEL_FRAGMENT_SHADER_PATH);
-		rocket.translate(glm::vec3(0.0f, 0.5f, 0.5f));  
-		rocket.rotate(-180.f, glm::vec3(1.0f, 0.0f, 0.0f));
-		rocket.scale(glm::vec3(0.006f, 0.006f, 0.006f));
+		LittleRocket rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, LITTLE_ROCKET_MODEL_VERTEX_SHADER_PATH, LITTLE_ROCKET_MODEL_FRAGMENT_SHADER_PATH);
+
 		mainScene.attachObjects(rocket.getObject());
 
 		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });

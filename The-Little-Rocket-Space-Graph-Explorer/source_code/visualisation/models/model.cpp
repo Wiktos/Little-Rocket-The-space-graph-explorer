@@ -1,6 +1,6 @@
 #include <iostream>
 #include <GL/glew.h>
-#include <SOIL2/SOIL2.h>
+#include <SOIL.h>
 
 #include "model.h"
 
