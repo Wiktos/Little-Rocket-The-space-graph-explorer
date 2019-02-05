@@ -28,7 +28,6 @@ void Scene::clearBuffers(std::vector<GLenum> buffers) const {
 	for (auto buf : buffers) {
 		glClear(buf);
 	}
-	glEnable(0);
 }
 
 void Scene::swapBuffers() const {

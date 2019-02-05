@@ -4,11 +4,11 @@
 
 #include "model.h"
 
-Model::Model(std::string const &path, const std::string& vertexPath, const std::string& fragmentPath) : vertexShaderCodePath(vertexPath), fragmentShaderCodePath(fragmentPath) {
+Model::Model(const std::string& path, const std::string& vertexPath, const std::string& fragmentPath) : vertexShaderCodePath(vertexPath), fragmentShaderCodePath(fragmentPath) {
 	loadModel(path);
 }
 
-void Model::loadModel(std::string const &path) {
+void Model::loadModel(const std::string& path) {
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
@@ -25,7 +25,8 @@ void Model::loadModel(std::string const &path) {
 void Model::processNode(aiNode *node, const aiScene *scene) {
 	for (unsigned int i = 0; i < node->mNumMeshes; i++){
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-		pushBackObject(processMesh(mesh, scene));
+		
+		processMesh(mesh, scene);
 	}
 
 	for (unsigned int i = 0; i < node->mNumChildren; i++){
@@ -33,20 +34,19 @@ void Model::processNode(aiNode *node, const aiScene *scene) {
 	}
 }
 
-std::shared_ptr<Mesh> Model::processMesh(aiMesh *mesh, const aiScene *scene) {
+void Model::processMesh(aiMesh *mesh, const aiScene *scene) {
 	std::vector<Vertex> vertices = getMeshVertices(mesh);
-	std::vector<unsigned int> indices = getMeshIndices(mesh);
+	std::vector<GLuint> indices = getMeshIndices(mesh);
 	std::vector<Texture> textures = getMeshTextures(mesh, scene);
 
-	return std::make_shared<Mesh>(Mesh(vertices, indices, textures, vertexShaderCodePath, fragmentShaderCodePath));
+	pushBackObject(std::shared_ptr<Mesh>(new Mesh(vertices, indices, textures, vertexShaderCodePath, fragmentShaderCodePath)));
 }
 
 std::vector<Vertex> Model::getMeshVertices(aiMesh* mesh) {
 	std::vector<Vertex> vertices;
 
 	// Walk through each of the mesh's vertices
-	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
-	{
+	for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 		Vertex vertex;
 		glm::vec3 vector; // we declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
 						  // positions
@@ -60,8 +60,7 @@ std::vector<Vertex> Model::getMeshVertices(aiMesh* mesh) {
 		vector.z = mesh->mNormals[i].z;
 		vertex.normal = vector;
 		// texture coordinates
-		if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
-		{
+		if (mesh->mTextureCoords[0]) {// does the mesh contain texture coordinates?
 			glm::vec2 vec;
 			// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
 			// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
@@ -69,16 +68,17 @@ std::vector<Vertex> Model::getMeshVertices(aiMesh* mesh) {
 			vec.y = mesh->mTextureCoords[0][i].y;
 			vertex.texCoords = vec;
 		}
-		else
+		else {
 			vertex.texCoords = glm::vec2(0.0f, 0.0f);
+		}
 		vertices.push_back(vertex);
 	}
 
 	return vertices;
 }
 
-std::vector<unsigned int> Model::getMeshIndices(aiMesh* mesh) {
-	std::vector<unsigned int> indices;
+std::vector<GLuint> Model::getMeshIndices(aiMesh* mesh) {
+	std::vector<GLuint> indices;
 
 	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 	{

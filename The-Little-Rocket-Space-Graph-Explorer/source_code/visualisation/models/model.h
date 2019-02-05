@@ -14,7 +14,7 @@ class Model : public ComplexSceneObject
 
 public:
 
-	Model(std::string const &path, const std::string& vertexPath, const std::string& fragmentPath);
+	Model(const std::string& path, const std::string& vertexPath, const std::string& fragmentPath);
 
 	std::weak_ptr<SceneObject> getObject(int idx) = delete;
 	std::vector<std::shared_ptr<SceneObject>> getObject() {
@@ -23,12 +23,12 @@ public:
 
 private:
 
-	void loadModel(std::string const &path);
-	void processNode(aiNode *node, const aiScene *scene);
-	std::shared_ptr<Mesh> processMesh(aiMesh *mesh, const aiScene *scene);
+	void loadModel(const std::string& path);
+	void processNode(aiNode* node, const aiScene* scene);
+	void processMesh(aiMesh* mesh, const aiScene* scene);
 	std::vector<Vertex> getMeshVertices(aiMesh* mesh);
-	std::vector<unsigned int> getMeshIndices(aiMesh* mesh);
+	std::vector<GLuint> getMeshIndices(aiMesh* mesh);
 	std::vector<Texture> getMeshTextures(aiMesh* mesh, const aiScene* scene);
-	std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
-	unsigned int textureFromFile(const char *path, const std::string &directory);
+	std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
+	unsigned int textureFromFile(const char* path, const std::string& directory);
 };

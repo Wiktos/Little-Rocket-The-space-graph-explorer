@@ -55,6 +55,10 @@ void UndirectedMapView::setEndNode(int layersNum) {
 void UndirectedMapView::setEdges(const UndirectedMap& G) {
 	for (int i = 0; i < G.V(); i++) {
 		for (auto v : G.adj(i)) {
+			//avoids double draw of the same edge
+			if (v < i) {
+				continue;
+			}
 			Point3D start = { positions[i].x, positions[i].y, positions[i].z };
 			Point3D end = { positions[v].x, positions[v].y, positions[v].z };
 

@@ -21,8 +21,7 @@ class Scene
 	std::shared_ptr<Camera> camera;
 	std::vector<std::shared_ptr<SceneObject>> objects;
 
-	Scene(GLFWwindow *window, GLuint width, GLuint height) : window(window), width(width), height(height) 
-	{
+	Scene(GLFWwindow *window, GLuint width, GLuint height) : window(window), width(width), height(height) {
 		camera = std::make_shared<Camera>(CameraViewVectors());
 	}
 

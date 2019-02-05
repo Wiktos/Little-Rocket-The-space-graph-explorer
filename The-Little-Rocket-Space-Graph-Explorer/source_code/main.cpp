@@ -36,13 +36,13 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMapView mapView({ 3, 3 });
+		UndirectedMapView mapView({ 10, 10 });
 		mainScene.attachObjects(mapView.getObjects());
 
-		Model rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, MODEL_VERTEX_SHADER_PATH, MODEL_FRAGMENT_SHADER_PATH);
-		rocket.rotate(-90.f, glm::vec3(0.0f, 1.0f, 0.0f));
-		rocket.scale(glm::vec3(0.05f, 0.05f, 0.05f));
-		rocket.translate(glm::vec3(-10.0f, -30.0f, 0.0f));  
+		Model rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, LITTLE_ROCKET_MODEL_VERTEX_SHADER_PATH, LITTLE_ROCKET_MODEL_FRAGMENT_SHADER_PATH);
+		rocket.translate(glm::vec3(0.0f, 0.5f, 0.5f));  
+		rocket.rotate(-180.f, glm::vec3(1.0f, 0.0f, 0.0f));
+		rocket.scale(glm::vec3(0.006f, 0.006f, 0.006f));
 		mainScene.attachObjects(rocket.getObject());
 
 		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
@@ -54,23 +54,19 @@ int main(int args, char* argv[]) {
 		});
 		controller.registerControlMethod(GLFW_KEY_W, [&]() {
 			auto cam = mainScene.getCamera();
-			GLfloat delta = app.delta();
-			cam->moveForward(delta);
+			cam->moveForward(app.delta());
 		});
 		controller.registerControlMethod(GLFW_KEY_S, [&]() {
 			auto cam = mainScene.getCamera();
-			GLfloat delta = app.delta();
-			cam->moveBackward(delta);
+			cam->moveBackward(app.delta());
 		});
 		controller.registerControlMethod(GLFW_KEY_A, [&]() {
 			auto cam = mainScene.getCamera();
-			GLfloat delta = app.delta();
-			cam->moveLeft(delta);
+			cam->moveLeft(app.delta());
 		});
 		controller.registerControlMethod(GLFW_KEY_D, [&]() {
 			auto cam = mainScene.getCamera();
-			GLfloat delta = app.delta();
-			cam->moveRight(delta);
+			cam->moveRight(app.delta());
 		});
 		controller.registerControlMethod(GLFW_KEY_UP, [&]() {
 			mainScene.getCamera()->increaseSpeed();
@@ -85,7 +81,6 @@ int main(int args, char* argv[]) {
 
 			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });
 			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT });
-
 			mainScene.drawObjects();
 
 			mainScene.swapBuffers();

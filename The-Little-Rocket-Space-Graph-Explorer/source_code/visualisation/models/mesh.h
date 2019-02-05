@@ -11,11 +11,9 @@
 
 class Mesh : public SceneObject
 {
-	friend class Model;
-
 	GLuint EBO;
 	std::vector<Vertex> vertices;
-	std::vector<unsigned int> indices;
+	std::vector<GLuint> indices;
 	std::vector<Texture> textures;
 
 	void setupDrawingDependencies();
@@ -23,6 +21,12 @@ class Mesh : public SceneObject
 	
 public:
 
-	Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures, const std::string& vertexPath, const std::string& fragmentPath);
+	Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<Texture> textures, const std::string& vertexPath, const std::string& fragmentPath);
+	Mesh(const Mesh&) = default;
+	Mesh(Mesh&&) = default;
 
+	Mesh& operator=(const Mesh&) = default;
+	Mesh& operator=(Mesh&&) = default;
+
+	virtual ~Mesh() = default;
 };
