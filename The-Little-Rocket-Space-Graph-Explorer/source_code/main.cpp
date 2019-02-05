@@ -35,7 +35,7 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMapView mapView({ 1, 1 });
+		UndirectedMapView mapView({ 2, 2 });
 		mainScene.attachObjects(mapView.getObjects());
 
 		LittleRocket rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, LITTLE_ROCKET_MODEL_VERTEX_SHADER_PATH, LITTLE_ROCKET_MODEL_FRAGMENT_SHADER_PATH);
