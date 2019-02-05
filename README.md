@@ -9,3 +9,7 @@ Up to now, application can randomly generates and displays map.
 1) *Camera Movement* - DONE
 2) *Enviroment visualisation* : Skybox, Stars as sources of light
 3) *Load and set model on start position* : Zero Node of graph - DONE
+
+Multithread programming :
+4) *Loading model and creating map*
+5) *Movement of rocket* - Update position without stopping application
