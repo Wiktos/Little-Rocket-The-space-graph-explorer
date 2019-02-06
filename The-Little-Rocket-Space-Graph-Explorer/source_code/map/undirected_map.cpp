@@ -20,6 +20,7 @@ int UndirectedMap::nodesPerLayer() const {
 }
 
 void UndirectedMap::regenerate(int layersConnections) {
+	clearConnections();
 	generator(this, layersConnections);
 }
 

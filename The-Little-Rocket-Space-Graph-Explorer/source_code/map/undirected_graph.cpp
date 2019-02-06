@@ -101,6 +101,12 @@ std::forward_list<int> UndirectedGraph::adj(int v) const {
 	return graph[v];
 }
 
+void UndirectedGraph::clearConnections() {
+	graph = std::vector<std::forward_list<int>>(vertices);
+	edges = 0;
+	std::fill(graph.begin(), graph.end(), std::forward_list<int>());
+}
+
 void UndirectedGraph::checkVertex(int v) const {
 	if (v < 0 || v > vertices) {
 		throw std::invalid_argument("Graph vertex out of range");

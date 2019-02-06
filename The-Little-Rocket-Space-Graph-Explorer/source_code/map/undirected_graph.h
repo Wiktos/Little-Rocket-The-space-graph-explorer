@@ -40,6 +40,7 @@ public:
 	bool areNeighbours(int v, int w) const;
 	void addEdge(int v, int w);
 	std::forward_list<int> adj(int v) const;
+	void clearConnections();
 
 	~UndirectedGraph() = default;
 };

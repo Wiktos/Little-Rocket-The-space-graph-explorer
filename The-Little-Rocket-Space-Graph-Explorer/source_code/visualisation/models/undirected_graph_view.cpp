@@ -22,11 +22,12 @@ void UndirectedMapView::setInnerLayersNodes(const UndirectedMap& G) {
 	float graphPosX = (G.nodesPerLayer() / 2.f) * DISTANCE_BETWEEN_NODES - DISTANCE_BETWEEN_NODES / 2.f;
 
 	for (int i = 0; i < G.layersNum(); i++) {
+		float z = static_cast<float>(-(DISTANCE_BETWEEN_LAYERS + DISTANCE_BETWEEN_LAYERS * i));
+		
 		for (int j = 0; j < G.nodesPerLayer(); j++) {
 			std::shared_ptr<GraphNodeView> node(new GraphNodeView(GRAPH_NODE_VERTEX_SHADER_PATH, GRAPH_NODE_FRAGMENT_SHADER_PATH));
 
 			float x = -graphPosX + DISTANCE_BETWEEN_NODES * j;
-			float z = static_cast<float>(-(DISTANCE_BETWEEN_LAYERS + DISTANCE_BETWEEN_LAYERS * i));
 
 			node->translate(glm::vec3(x, Y, z));
 			node->rotate(-90.f, glm::vec3(1.f, 0.f, 0.f));

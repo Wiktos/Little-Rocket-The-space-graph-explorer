@@ -3,9 +3,7 @@
 #endif
 
 #include <main_includes.h>
-template <typename T> int sgn(T val) {
-	return (T(0) < val) - (val < T(0));
-}
+
 int main(int args, char* argv[]) {
 
 	//#define TESTS_ON
@@ -37,7 +35,8 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(20, 20);
+		UndirectedMap map(10, 4);
+		map.regenerate(3);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
@@ -72,40 +71,37 @@ int main(int args, char* argv[]) {
 		});
 		controller.registerControlMethod(GLFW_KEY_DOWN, [&]() {
 			mainScene.getCamera()->decreaseSpeed();
-		});   
+		});
 
 		std::thread rocketMovement([&]() {
-			glm::vec3 direction = mapView.getVertexPosition(3) - rocket.position();
-			
-			//rotation towards new direction
-			//computes angle between vectors
-			float dotProduct = glm::dot(direction, rocket.face());
-			float denominator = glm::length(rocket.face()) * glm::length(direction);
-			float angle = glm::degrees(acos(dotProduct / denominator));
-			
-			//determines whether we have left or right angle +1 right -1 left 
-			short leftOrRight = sgn((glm::cross(direction, rocket.face())).y);
+			std::unique_ptr<SearchAlgorithm> engine(new DepthFirstSearch(&map, UndirectedMap::START_NODE_IDX));
+			engine->performSearching();
+			std::stack<int> path = engine->pathTo(map.END_NODE_IDX);
 
-			float suppAngle = 0.f;
-			while(abs(suppAngle) < abs(angle - 0.0005f) && leftOrRight != 0) {
-				rocket.rotate(sgn(leftOrRight) * 0.005f, glm::vec3(0.f, 1.f, 0.f));
-				//stops the thread
-				if (app.shouldAppBeClosed()) {
-					break;
-				} 
+			//delete start node from path
+			path.pop();
 
-				suppAngle += sgn(leftOrRight) * 0.005f;
+			while (!path.empty()) {
+				int v = path.top();
+				path.pop();
+				glm::vec3 direction = mapView.getVertexPosition(v) - rocket.position();
+
+				int pathSpliter = 100000;
+				for (int i = 0; i < pathSpliter; i++) {
+					rocket.translate(glm::vec3(direction.x * 1 / pathSpliter , direction.y * 1 / pathSpliter, direction.z * 1 / pathSpliter));
+					
+					if (app.shouldAppBeClosed()) {
+						break;
+					}
+				}
 			}
-
-			//translation towards new direction
-
 		});
 
 		while (!app.shouldAppBeClosed()) {
 			app.updateDeltaTime();
 			controller.pollEvents();
 
-			mainScene.clearColor({ 0.f, 0.f, 0.0f, .0f });
+			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });
 			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT });
 			mainScene.drawObjects();
 
