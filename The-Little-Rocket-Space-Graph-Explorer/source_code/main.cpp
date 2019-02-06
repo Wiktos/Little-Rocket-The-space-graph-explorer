@@ -1,5 +1,5 @@
 #ifdef _WIN32
-	#define GLEW_STATIC  
+#define GLEW_STATIC  
 #endif
 
 #include <main_includes.h>
@@ -35,11 +35,11 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMapView mapView({ 2, 2 });
+		UndirectedMap map(1, 1);
+		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
 		LittleRocket rocket(LITTLE_ROCKET_MODEL_OBJ_PATH, LITTLE_ROCKET_MODEL_VERTEX_SHADER_PATH, LITTLE_ROCKET_MODEL_FRAGMENT_SHADER_PATH);
-
 		mainScene.attachObjects(rocket.getObject());
 
 		Camera camera({ { 0.f, 3.f, 9.f }, { 0.f, 0.f, -1.f }, { 0.f, 1.f, 0.f } });
@@ -70,6 +70,16 @@ int main(int args, char* argv[]) {
 		});
 		controller.registerControlMethod(GLFW_KEY_DOWN, [&]() {
 			mainScene.getCamera()->decreaseSpeed();
+		});   
+
+		std::thread thread([&]() {
+			while(true) {
+				rocket.rotate(-0.005f, glm::vec3(0.f, 1.f, 0.f));
+				//stops the thread
+				if (app.shouldAppBeClosed()) {
+					break;
+				}
+			} 
 		});
 
 		while (!app.shouldAppBeClosed()) {
@@ -82,6 +92,8 @@ int main(int args, char* argv[]) {
 
 			mainScene.swapBuffers();
 		}
+
+		thread.join();
 	}
 	catch (const std::runtime_error& ex) {
 		std::cerr << ex.what();

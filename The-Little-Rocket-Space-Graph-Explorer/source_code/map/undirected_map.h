@@ -22,11 +22,11 @@ public:
 	const int END_NODE_IDX;
 
 	UndirectedMap(int layers, int nodesInLayer);
-	UndirectedMap(const UndirectedMap&) = delete;
-	UndirectedMap(UndirectedMap&&) = delete;
+	UndirectedMap(const UndirectedMap&) = default;
+	UndirectedMap(UndirectedMap&&) = default;
 	
-	UndirectedMap& operator=(const UndirectedMap&) = delete;
-	UndirectedMap& operator=(UndirectedMap&&) = delete;
+	UndirectedMap& operator=(const UndirectedMap&) = default;
+	UndirectedMap& operator=(UndirectedMap&&) = default;
 
 	int layersNum() const;
 	int nodesPerLayer() const;
