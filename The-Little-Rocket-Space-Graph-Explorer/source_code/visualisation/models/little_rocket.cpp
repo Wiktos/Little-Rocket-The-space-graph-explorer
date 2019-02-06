@@ -8,4 +8,6 @@ void LittleRocket::setAtStartingPosition() {
 
 LittleRocket::LittleRocket(const std::string& path, const std::string& vertexPath, const std::string& fragmentPath) : Model(path, vertexPath, fragmentPath) {
 	setAtStartingPosition();
+	currFace = glm::vec3(0.f, 0.f, -1.f);
+	currPosition = glm::vec3(0.f, 0.f, 0.f);
 }

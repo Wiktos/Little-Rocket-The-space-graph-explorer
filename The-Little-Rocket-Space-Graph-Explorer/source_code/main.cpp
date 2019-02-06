@@ -3,7 +3,9 @@
 #endif
 
 #include <main_includes.h>
-
+template <typename T> int sgn(T val) {
+	return (T(0) < val) - (val < T(0));
+}
 int main(int args, char* argv[]) {
 
 	//#define TESTS_ON
@@ -35,7 +37,7 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(1, 1);
+		UndirectedMap map(20, 20);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
@@ -72,28 +74,45 @@ int main(int args, char* argv[]) {
 			mainScene.getCamera()->decreaseSpeed();
 		});   
 
-		std::thread thread([&]() {
-			while(true) {
-				rocket.rotate(-0.005f, glm::vec3(0.f, 1.f, 0.f));
+		std::thread rocketMovement([&]() {
+			glm::vec3 direction = mapView.getVertexPosition(3) - rocket.position();
+			
+			//rotation towards new direction
+			//computes angle between vectors
+			float dotProduct = glm::dot(direction, rocket.face());
+			float denominator = glm::length(rocket.face()) * glm::length(direction);
+			float angle = glm::degrees(acos(dotProduct / denominator));
+			
+			//determines whether we have left or right angle +1 right -1 left 
+			short leftOrRight = sgn((glm::cross(direction, rocket.face())).y);
+
+			float suppAngle = 0.f;
+			while(abs(suppAngle) < abs(angle - 0.0005f) && leftOrRight != 0) {
+				rocket.rotate(sgn(leftOrRight) * 0.005f, glm::vec3(0.f, 1.f, 0.f));
 				//stops the thread
 				if (app.shouldAppBeClosed()) {
 					break;
-				}
-			} 
+				} 
+
+				suppAngle += sgn(leftOrRight) * 0.005f;
+			}
+
+			//translation towards new direction
+
 		});
 
 		while (!app.shouldAppBeClosed()) {
 			app.updateDeltaTime();
 			controller.pollEvents();
 
-			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });
+			mainScene.clearColor({ 0.f, 0.f, 0.0f, .0f });
 			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT });
 			mainScene.drawObjects();
 
 			mainScene.swapBuffers();
 		}
 
-		thread.join();
+		rocketMovement.join();
 	}
 	catch (const std::runtime_error& ex) {
 		std::cerr << ex.what();
