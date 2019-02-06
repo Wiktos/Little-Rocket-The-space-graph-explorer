@@ -35,8 +35,8 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(10, 4);
-		map.regenerate(3);
+		UndirectedMap map(14, 5);
+		map.regenerate(2);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
@@ -76,20 +76,16 @@ int main(int args, char* argv[]) {
 		std::thread rocketMovement([&]() {
 			std::unique_ptr<SearchAlgorithm> engine(new DepthFirstSearch(&map, UndirectedMap::START_NODE_IDX));
 			engine->performSearching();
-			std::stack<int> path = engine->pathTo(map.END_NODE_IDX);
+			std::vector<int> path = engine->traceTo(map.END_NODE_IDX);
 
 			//delete start node from path
-			path.pop();
-
-			while (!path.empty()) {
-				int v = path.top();
-				path.pop();
-				glm::vec3 direction = mapView.getVertexPosition(v) - rocket.position();
-
+			for (auto iter = path.begin() + 1; iter != path.end(); iter++) {
+				glm::vec3 direction = mapView.getVertexPosition(*iter) - rocket.position();
+				
 				int pathSpliter = 100000;
 				for (int i = 0; i < pathSpliter; i++) {
-					rocket.translate(glm::vec3(direction.x * 1 / pathSpliter , direction.y * 1 / pathSpliter, direction.z * 1 / pathSpliter));
-					
+					rocket.translate(glm::vec3(direction.x / pathSpliter, direction.y / pathSpliter, direction.z / pathSpliter));
+
 					if (app.shouldAppBeClosed()) {
 						break;
 					}
