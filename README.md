@@ -3,7 +3,7 @@ The works on project are underway.
 
 ## Current work status 
 Up to now, application can randomly generates and displays map. 
-![alt text](https://db3pap002files.storage.live.com/y4me3ubEkCCNf_-mIpaqO8GKBCtX6TeCqQyXG778i4Qj8gmOIIPu07D4CJrramP0M5eFIBMtS6PKEmUI5WJoIly2q7HXVnyzJ8_IghRA2_vA94qdfNG9fYUujOBjhYgpitMRQo6YcWPIyFGAhQB1Jc4GTfFSgNFmJsQP4qSsxLo3KM9eC0E6Z6SZ0euSsE7Cs2e20Xx8OprU-JuFfPixH58FQ/current.jpg?psid=1&width=943&height=653)
+![alt text](https://9achxq.db.files.1drv.com/y4mAQjV9gGusTuKeb0-vfOdG2XdibIw8c5wooAKa17zhL_7rm6bxZxfDErxt4FHYadCJgRVNZTofAfsYTwH-JQK-rizHbrt6alo8BPrQBh8MzD9xfRbOHjBefTohSMwtnzuTCXzbC2JDPHwZPkcCz-cde4RMNSvmZWJ3Z1_qA0eX6A74UvnIwcVBnZdsJ-d13LmcIMFHuHkFZBIoQyPPreTIw/overview.gif?download&psid=1)
 
 ## Current TODO List 
 
@@ -14,5 +14,4 @@ Up to now, application can randomly generates and displays map.
 
 ### Multithread programming :
 
-4) *Loading model and creating map*
-5) *Movement of rocket* - Update position without stopping application
+4) *Movement of rocket* - Update position without stopping application - DONE
