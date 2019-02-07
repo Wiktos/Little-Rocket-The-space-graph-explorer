@@ -4,7 +4,7 @@ The works on project are underway.
 ## Current work status 
 Up to now, application can randomly generates and displays map.
 
-![alt text](https://6actnw.db.files.1drv.com/y4mUYzdR1YmylnHPqw2oEGs16_d8AwypmgckryqHNlqGzX-QAw7tWS5qLLYOBAX7qqhyRWLXRvZ36Em7QNTuwz9RGbmE3OYiRjqEyGyfwTwGBNpLpGvhgX_E51LBYu8hGIq7ck6q6PzYota13my4JZJd9dSqJ6B53PdrK_zEsrq-LlfAkRLzuEY56KoKa3b48WlQ4Nl5kG7VxUYnCn81XVK4g/overview.gif?download&psid=1)
+![alt text](https://db3pap002files.storage.live.com/y4mgXeRkkFN7TXWzC9nt1wtWWJphBCn13iXthMIkTnfpQsb9J5qAPwGyn3GZ6rgvmDOIW660s14hWOA_-tHHr1U6OHC7YeUVJ_ZQg4MS4Q0xo9AO1odf2yTpH3GBypw3XG7Cv740mW8sv0TOi4We9vQzuTw3Uw-1HHeFXkMIkZ_4bGoEuDHmNfvBxfIPDmQCXtcYn34avNAA2mdd6nisbAnLA/over.jpg?psid=1&width=943&height=653)
 
 ## Current TODO List before release 1.0
 
