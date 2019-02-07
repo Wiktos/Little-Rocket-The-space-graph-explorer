@@ -33,7 +33,7 @@ public:
 
 	void makeContextCurrent(Scene& scene);
 
-	GLboolean shouldAppBeClosed();
+	GLboolean shouldAppBeClosed() const;
 	void setApplicationShouldClose(GLboolean val);
 
 	GLfloat delta() { return deltaTime; }

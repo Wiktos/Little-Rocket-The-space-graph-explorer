@@ -18,7 +18,7 @@ void OpenGLApplication::makeContextCurrent(Scene& scene) {
 	glfwMakeContextCurrent(&scene);
 }
 
-GLboolean OpenGLApplication::shouldAppBeClosed() {
+GLboolean OpenGLApplication::shouldAppBeClosed() const {
 	return shouldBeClosed;
 }
 

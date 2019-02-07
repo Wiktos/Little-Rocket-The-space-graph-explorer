@@ -1,4 +1,4 @@
-#include "undirected_graph_view.h"
+#include "undirected_map_view.h"
 
 UndirectedMapView::UndirectedMapView(const UndirectedMap& G) {
 	setStartNode();
