@@ -35,8 +35,8 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(2, 2);
-		map.regenerate(1);
+		UndirectedMap map(12, 4);
+		map.regenerate(2);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
