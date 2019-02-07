@@ -42,7 +42,7 @@ public :
 
 	void attachObject(std::shared_ptr<SceneObject> object);
 	void attachObjects(std::vector<std::shared_ptr<SceneObject>> objects);
-	void attachCamera(std::shared_ptr<Camera> camera);
+	void attachCamera(std::shared_ptr<Camera> camera);\
 
 	std::shared_ptr<Camera> getCamera() { return camera; }
 

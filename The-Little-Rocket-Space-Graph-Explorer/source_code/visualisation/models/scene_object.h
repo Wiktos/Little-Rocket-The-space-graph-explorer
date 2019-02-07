@@ -11,18 +11,19 @@
 	by Wiktor £azarski
 */
 class SceneObject
-{
-	//initialy matrices are identity mat 
-	glm::mat4 model = glm::mat4(1.f);
-	mutable glm::mat4 view = glm::mat4(1.f);
-	mutable glm::mat4 projection = glm::mat4(1.f);
-	
+{	
+
 	virtual void drawObject() const = 0;
 
 protected:
 
 	GLuint VAO, VBO;
 	ShaderProgram shader;
+
+	//initialy matrices are identity mat 
+	glm::mat4 model = glm::mat4(1.f);
+	mutable glm::mat4 view = glm::mat4(1.f);
+	mutable glm::mat4 projection = glm::mat4(1.f);
 
 public :
 	
@@ -33,7 +34,7 @@ public :
 	SceneObject& operator=(const SceneObject&) = default;
 	SceneObject& operator=(SceneObject&&) = default;
 
-	void draw() const;
+	virtual void draw() const;
 	void rotate(float angle, glm::vec3 axis);
 	void translate(glm::vec3 vec);
 	void scale(glm::vec3 vec);

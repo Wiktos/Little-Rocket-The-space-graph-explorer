@@ -15,7 +15,7 @@ void SceneObject::draw() const {
 void SceneObject::rotate(float angle, glm::vec3 axis) {
 	model = glm::rotate(model, glm::radians(angle), axis);
 }
-#include <iostream>
+
 void SceneObject::translate(glm::vec3 vec) {
 	model = glm::translate(model, vec);
 }

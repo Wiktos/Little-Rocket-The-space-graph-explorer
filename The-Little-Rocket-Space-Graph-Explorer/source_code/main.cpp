@@ -36,7 +36,7 @@ int main(int args, char* argv[]) {
 		OpenGLApplication::initGLEW();
 
 		UndirectedMap map(2, 2);
-		map.regenerate(2);
+		map.regenerate(1);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
@@ -78,6 +78,10 @@ int main(int args, char* argv[]) {
 			movement(mapView, rocket, app, map.END_NODE_IDX);
 		}); 
 
+		std::shared_ptr<Skybox> skybox(new Skybox(SKYBOX_VERTEX_SHADER_PATH, SKYBOX_FRAGMENT_SHADER_PATH));
+		skybox->scale(glm::vec3(100.f, 100.f, 100.f));
+		mainScene.attachObject(skybox);
+
 		while (!app.shouldAppBeClosed()) {
 			app.updateDeltaTime();
 			controller.pollEvents();
@@ -85,7 +89,7 @@ int main(int args, char* argv[]) {
 			mainScene.clearColor({ .5f, 0.2f, 1.0f, .0f });
 			mainScene.clearBuffers({ GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT });
 			mainScene.drawObjects();
-
+			
 			mainScene.swapBuffers();
 		}
 

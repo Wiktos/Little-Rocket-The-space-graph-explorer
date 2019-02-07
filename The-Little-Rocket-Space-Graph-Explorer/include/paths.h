@@ -14,3 +14,9 @@ static const std::string LITTLE_ROCKET_MODEL_OBJ_PATH = "resources/models/little
 static const std::string LITTLE_ROCKET_MODEL_VERTEX_SHADER_PATH = "resources/shaders/model_vertex.vert";
 
 static const std::string LITTLE_ROCKET_MODEL_FRAGMENT_SHADER_PATH = "resources/shaders/model_fragment.frag";
+
+static const std::string SKYBOX_TEXTURES_PATH = "resources/textures/cubemap/";
+
+static const std::string SKYBOX_VERTEX_SHADER_PATH = "resources/shaders/skybox_vertex.vert";
+
+static const std::string SKYBOX_FRAGMENT_SHADER_PATH = "resources/shaders/skybox_fragment.frag";
