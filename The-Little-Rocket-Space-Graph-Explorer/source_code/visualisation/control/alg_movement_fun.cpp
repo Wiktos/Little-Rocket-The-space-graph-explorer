@@ -14,7 +14,7 @@ void AlgorithmMovement::operator()(const UndirectedMapView& mapView, LittleRocke
 		glm::vec3 direction = mapView.getVertexPosition(*iter) - rocket.position();
 
 		//splits the path into small pieces to makes animation like feeling
-		int pathSpliter = 100000;
+		int pathSpliter = 70000;
 		for (int i = 0; i < pathSpliter; i++) {
 			rocket.translate(glm::vec3(direction.x / pathSpliter, direction.y / pathSpliter, direction.z / pathSpliter));
 

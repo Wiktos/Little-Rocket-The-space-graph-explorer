@@ -19,6 +19,12 @@ void StandardUndirectedMapGenerator::operator()(UndirectedMap* map, int layersCo
 
 void connectLayers(int layers, int nodesInLayer, int layersConnection, UndirectedMap* const map) {
 	for (int i = 0; i < layers; i++) {
+
+		for (int j = 1; j < nodesInLayer; j++) {
+			//connects nodes of one layer
+			map->addEdge(j + i * nodesInLayer, j + i * nodesInLayer + 1);
+		}
+
 		//interlayers connections
 		if (i < layers - 1) {
 			std::uniform_int_distribution<int> currLayerDistribution(i * nodesInLayer + 1, i * nodesInLayer + nodesInLayer);
@@ -28,12 +34,6 @@ void connectLayers(int layers, int nodesInLayer, int layersConnection, Undirecte
 				map->addEdge(currLayerDistribution(engine), nextLayerDistribution(engine));
 			}
 		}
-
-		for (int j = 1; j < nodesInLayer; j++) {
-			//connects nodes of one layer
-			map->addEdge(j + i * nodesInLayer, j + i * nodesInLayer + 1);
-		}
-
 	}
 }
 
