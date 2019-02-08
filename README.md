@@ -13,7 +13,7 @@ Up to now, application can randomly generates and displays map.
 2) *Enviroment visualisation* : Skybox - DONE
 3) *Load and set model on start position* : Zero Node of graph - DONE
 4) *Additional implementation* : implement another graph search algorithm.
-5) *UI* : simple console display at the beginning to set out parameters of graph
+5) *UI* : simple console display at the beginning to set out parameters of graph - DONE
 6) *Camera keeps tracking rocket* - DONE
 
 ### Multithread programming :
