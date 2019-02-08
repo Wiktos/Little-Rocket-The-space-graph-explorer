@@ -6,7 +6,7 @@
 
 int main(int args, char* argv[]) {
 
-	#define TESTS_ON
+	//#define TESTS_ON
 #ifdef TESTS_ON
 	//checks memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -35,8 +35,8 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(11, 8);
-		map.regenerate(6);
+		UndirectedMap map(2, 2);
+		map.regenerate(1);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 

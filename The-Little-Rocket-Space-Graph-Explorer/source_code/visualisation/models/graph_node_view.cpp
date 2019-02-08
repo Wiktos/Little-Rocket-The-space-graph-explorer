@@ -33,6 +33,7 @@ void GraphNodeView::setDrawingDependencies() {
 }
 
 void GraphNodeView::drawObject() const {
+	shader.setVec3("new_color", { color.r, color.g, color.b });
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_POLYGON, 0, vertices.size());
 	glBindVertexArray(0);

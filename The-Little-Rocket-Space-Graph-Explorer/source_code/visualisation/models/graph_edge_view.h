@@ -1,5 +1,7 @@
 #pragma once
 #include <array>
+
+#include "../render/color.h"
 #include "scene_object.h"
 #include "point3d.h"
 
@@ -12,10 +14,10 @@ class GraphEdgeView final : public SceneObject
 {
 	static const short START_POINT_IDX = 0;
 	static const short END_POINT_IDX = 1;
+	
 	std::array<Point3D, 2> points;
 
 	void setDrawingDependencies();
-
 	void drawObject() const override;
 
 public :

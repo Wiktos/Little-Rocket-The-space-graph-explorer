@@ -20,6 +20,6 @@ public:
 	AlgorithmMovement(SearchAlgorithm* alg) : engine(alg)
 	{};
 
-	void operator()(const UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const;
+	void operator()(UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const;
 
 };
