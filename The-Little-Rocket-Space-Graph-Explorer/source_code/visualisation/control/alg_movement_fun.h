@@ -14,9 +14,13 @@
 class AlgorithmMovement
 {
 	std::shared_ptr<SearchAlgorithm> engine;
+	Color visited = { .3f, 1.f, .3f }; 
+	Color belongs = { 1.f, .2f, .3f };
 
 	void visualiseAlgorithm(UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const;
-	void updateColor(UndirectedMapView& map, const OpenGLApplication& app, int endNode) const;
+	void updatePathNodesColors(UndirectedMapView& mapView, const OpenGLApplication& app, int endNode) const;
+	void markNodeAsVisited(UndirectedMapView& mapView, int v) const;
+	void markNodeAsPathNode(UndirectedMapView& mapView, int v) const;
 
 public:
 
@@ -24,5 +28,8 @@ public:
 	{};
 
 	void operator()(UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const;
+
+	void setVisitedColor(Color visited) { this->visited = visited; }
+	void setBelongsColor(Color belongs) { this->belongs = belongs; }
 
 };

@@ -6,7 +6,7 @@
 
 int main(int args, char* argv[]) {
 
-	//#define TESTS_ON
+	 //#define TESTS_ON
 #ifdef TESTS_ON
 	//checks memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -35,7 +35,7 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(2, 2);
+		UndirectedMap map(4, 4);
 		map.regenerate(1);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
@@ -49,6 +49,28 @@ int main(int args, char* argv[]) {
 		SceneController controller(&mainScene);
 		controller.registerControlMethod(GLFW_KEY_ESCAPE, [&app]() {
 			app.setApplicationShouldClose(GL_TRUE);
+		});
+		controller.registerControlMethod(GLFW_KEY_W, [&]() {
+			auto cam = mainScene.getCamera();
+			cam->moveForward(app.delta());
+		});
+		controller.registerControlMethod(GLFW_KEY_S, [&]() {
+			auto cam = mainScene.getCamera();
+			cam->moveBackward(app.delta());
+		});
+		controller.registerControlMethod(GLFW_KEY_A, [&]() {
+			auto cam = mainScene.getCamera();
+			cam->moveLeft(app.delta());
+		});
+		controller.registerControlMethod(GLFW_KEY_D, [&]() {
+			auto cam = mainScene.getCamera();
+			cam->moveRight(app.delta());
+		});
+		controller.registerControlMethod(GLFW_KEY_UP, [&]() {
+			mainScene.getCamera()->increaseSpeed();
+		});
+		controller.registerControlMethod(GLFW_KEY_DOWN, [&]() {
+			mainScene.getCamera()->decreaseSpeed();
 		});
 
 		std::thread rocketMovement([&](){
