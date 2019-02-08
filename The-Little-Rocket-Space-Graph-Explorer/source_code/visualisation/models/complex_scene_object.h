@@ -21,7 +21,7 @@ public:
 	ComplexSceneObject& operator=(ComplexSceneObject&&) = default;
 
 	void pushBackObject(std::shared_ptr<SceneObject> obj);
-	std::weak_ptr<SceneObject> getObject(int idx);
+	std::shared_ptr<SceneObject> getObject(int idx);
 	std::vector<std::shared_ptr<SceneObject>> getObjects();
 
 	void rotate(float angle, glm::vec3 axis);

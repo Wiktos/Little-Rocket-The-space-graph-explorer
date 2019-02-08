@@ -32,7 +32,7 @@ public:
 		return glm::lookAt(viewVectors.cameraPos, viewVectors.cameraPos + viewVectors.cameraFront, viewVectors.cameraUp);
 	}
 
-	float getSpeed() { return speed; }
+	float getSpeed() const { return speed; }
 	void increaseSpeed();
 	void decreaseSpeed();
 
@@ -40,6 +40,9 @@ public:
 	void moveBackward(float delta);
 	void moveLeft(float delta);
 	void moveRight(float delta);
+
+	glm::vec3 currentPostion() const { return viewVectors.cameraPos; }
+	void setPosition(glm::vec3 newPos) { viewVectors.cameraPos = newPos; }
 
 	~Camera() = default;
 };

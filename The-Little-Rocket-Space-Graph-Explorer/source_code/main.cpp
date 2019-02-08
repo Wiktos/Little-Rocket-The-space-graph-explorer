@@ -35,8 +35,8 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(12, 4);
-		map.regenerate(2);
+		UndirectedMap map(11, 8);
+		map.regenerate(6);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
@@ -50,32 +50,10 @@ int main(int args, char* argv[]) {
 		controller.registerControlMethod(GLFW_KEY_ESCAPE, [&app]() {
 			app.setApplicationShouldClose(GL_TRUE);
 		});
-		controller.registerControlMethod(GLFW_KEY_W, [&]() {
-			auto cam = mainScene.getCamera();
-			cam->moveForward(app.delta());
-		});
-		controller.registerControlMethod(GLFW_KEY_S, [&]() {
-			auto cam = mainScene.getCamera();
-			cam->moveBackward(app.delta());
-		});
-		controller.registerControlMethod(GLFW_KEY_A, [&]() {
-			auto cam = mainScene.getCamera();
-			cam->moveLeft(app.delta());
-		});
-		controller.registerControlMethod(GLFW_KEY_D, [&]() {
-			auto cam = mainScene.getCamera();
-			cam->moveRight(app.delta());
-		});
-		controller.registerControlMethod(GLFW_KEY_UP, [&]() {
-			mainScene.getCamera()->increaseSpeed();
-		});
-		controller.registerControlMethod(GLFW_KEY_DOWN, [&]() {
-			mainScene.getCamera()->decreaseSpeed();
-		});
 
 		std::thread rocketMovement([&](){
 			AlgorithmMovement movement(new DepthFirstSearch (&map, UndirectedMap::START_NODE_IDX));
-			movement(mapView, rocket, app, map.END_NODE_IDX);
+			movement(mapView, rocket, mainScene.getCamera(), app, map.END_NODE_IDX);
 		}); 
 
 		std::shared_ptr<Skybox> skybox(new Skybox(SKYBOX_VERTEX_SHADER_PATH, SKYBOX_FRAGMENT_SHADER_PATH));

@@ -26,7 +26,7 @@ void OpenGLApplication::setApplicationShouldClose(GLboolean val) {
 	shouldBeClosed = val;
 }
 
-void OpenGLApplication::updateDeltaTime() {
+void OpenGLApplication::updateDeltaTime() const {
 	GLfloat currFrame = static_cast<GLfloat>(glfwGetTime());
 	deltaTime = currFrame - lastFrame;
 	lastFrame = currFrame;

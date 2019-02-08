@@ -4,7 +4,7 @@ void ComplexSceneObject::pushBackObject(std::shared_ptr<SceneObject> obj) {
 	objects.push_back(obj);
 }
 
-std::weak_ptr<SceneObject> ComplexSceneObject::getObject(int idx) {
+std::shared_ptr<SceneObject> ComplexSceneObject::getObject(int idx) {
 	return objects[idx];
 }
 

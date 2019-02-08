@@ -16,8 +16,8 @@
 class OpenGLApplication
 {
 	GLboolean shouldBeClosed = GL_FALSE;
-	GLfloat deltaTime = 0.0f;
-	GLfloat lastFrame = 0.0f;
+	mutable GLfloat deltaTime = 0.0f;
+	mutable GLfloat lastFrame = 0.0f;
 
 public:
 
@@ -36,8 +36,8 @@ public:
 	GLboolean shouldAppBeClosed() const;
 	void setApplicationShouldClose(GLboolean val);
 
-	GLfloat delta() { return deltaTime; }
-	void updateDeltaTime();
+	GLfloat delta() const { return deltaTime; }
+	void updateDeltaTime() const;
 
 	~OpenGLApplication();
 };
