@@ -2,6 +2,12 @@
 
 void AlgorithmMovement::operator()(UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const {
 
+	visualiseAlgorithm(mapView, rocket, cam, app, endNode);
+	updateColor(mapView, app, endNode);
+
+}
+
+void AlgorithmMovement::visualiseAlgorithm(UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const {
 	engine->performSearching();
 	if (!engine->hasPathTo(endNode)) {
 		return;
@@ -28,14 +34,17 @@ void AlgorithmMovement::operator()(UndirectedMapView& mapView, LittleRocket& roc
 			}
 		}
 	}
+}
 
+void AlgorithmMovement::updateColor(UndirectedMapView& mapView, const OpenGLApplication& app, int endNode)  const {
 	std::stack<int> path = engine->pathTo(endNode);
+	
 	while (!path.empty()) {
 		int v = path.top();
 		path.pop();
 
 		//changing color of vertices in path to pink like
-		Color newCol = { 1.0f, .2f, .3f};
+		Color newCol = { 1.0f, .2f, .3f };
 		std::shared_ptr<GraphNodeView> currVertexView = std::dynamic_pointer_cast<GraphNodeView>(mapView.getObject(v));
 		currVertexView->changeColor(newCol);
 

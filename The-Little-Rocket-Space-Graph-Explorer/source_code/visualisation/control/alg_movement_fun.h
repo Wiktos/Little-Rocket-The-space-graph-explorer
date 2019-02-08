@@ -15,6 +15,9 @@ class AlgorithmMovement
 {
 	std::shared_ptr<SearchAlgorithm> engine;
 
+	void visualiseAlgorithm(UndirectedMapView& mapView, LittleRocket& rocket, std::shared_ptr<Camera> cam, const OpenGLApplication& app, int endNode) const;
+	void updateColor(UndirectedMapView& map, const OpenGLApplication& app, int endNode) const;
+
 public:
 
 	AlgorithmMovement(SearchAlgorithm* alg) : engine(alg)
