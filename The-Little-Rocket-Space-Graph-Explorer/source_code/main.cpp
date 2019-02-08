@@ -18,6 +18,10 @@ int main(int args, char* argv[]) {
 #endif // TESTS_ON
 
 	try {
+		
+		ConsoleUI ui;
+		ApplicationParameters params = ui.start();
+		
 		OpenGLApplication::initGLFW();
 
 		SceneBuilder builder;
@@ -35,8 +39,8 @@ int main(int args, char* argv[]) {
 
 		OpenGLApplication::initGLEW();
 
-		UndirectedMap map(4, 4);
-		map.regenerate(1);
+		UndirectedMap map(params.layers, params.nodesPerLayer);
+		map.regenerate(params.layersConnections);
 		UndirectedMapView mapView(map);
 		mainScene.attachObjects(mapView.getObjects());
 
