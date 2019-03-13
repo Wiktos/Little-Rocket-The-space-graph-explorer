@@ -3,6 +3,11 @@
 #include <string>
 #include "user_interface.h"
 
+/*
+	ConsoleUI is a class that provides simple console user interface for application.
+
+	by Wiktor £azarski
+*/
 class ConsoleUI final : public UserInterface
 {
 public:
