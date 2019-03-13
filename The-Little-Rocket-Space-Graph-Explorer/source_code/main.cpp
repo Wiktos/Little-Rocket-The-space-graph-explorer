@@ -18,7 +18,6 @@ int main(int args, char* argv[]) {
 #endif // TESTS_ON
 
 	try {
-		
 		ConsoleUI ui;
 		ApplicationParameters params = ui.start();
 		
