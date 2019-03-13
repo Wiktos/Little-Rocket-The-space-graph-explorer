@@ -50,7 +50,7 @@ During visualisation nodes are colored. Green colored nodes indicate all visited
 
 To close window and application press ESCAPE key.
 
-## What next
+## What next ?
 If I will find a minute or two, I will improve some things in this project. Here are some ideas :
 - Qt Framework will be used to create UI for receiving information about basic application parameters
 - More algorithms of searching undirected graph will be visualised - ofcourse user will have a posibility to decide (Breath First Search, British Museum and more...)
