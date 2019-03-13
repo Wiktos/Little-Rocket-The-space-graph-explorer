@@ -1,4 +1,4 @@
-# General Overview
+# The Litte Rocket Space Graph Explorer
 As an huge enthusiast of algorithms and graphics programming I decided to connect both of them and create one application that union those two fields of Computer Science. In such way idea for "The Litte Rocket Space Graph Explorer" appeared.
 The-Little-Rocket-Space-Graph-Explorer is a program that visualise path founding algorithm in undirected graph. The algorithm used by The Little Rocket - main character of application - is The Depth First Search algorithm. For detailed description of algorithm see https://algs4.cs.princeton.edu/41graph/.
 
