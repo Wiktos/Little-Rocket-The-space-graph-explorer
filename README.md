@@ -19,7 +19,7 @@ The-Little-Rocket-Space-Graph-Explorer is a program that visualise path founding
 - **HOW PROGRAMMING IS AWESOME !!!** (although I have already known it :) )
 
 ## User Interface
-User Interface is simulated via console and standard input/output. It reminds me about the first project which I was creating when I started to learn programming. Console User Interface asks about general application parameters needed to render a map for little rocket to search. Map represents undirected graph, such solution gives the flexibility for user to test algorithm on diffrent types of undirected graphs. Below you can see some screenshots from visualisation window. I am planning to improve it and use Qt framework in release 2.0.
+User Interface is simulated via console and standard input/output. It reminds me about the first project which I was creating when I started to learn programming. Console User Interface asks about general application parameters needed to render a map for little rocket to search. Map represents undirected graph, such solution gives the flexibility for user to test algorithm on diffrent types of undirected graphs. Below you can see screenshot from user interface window. I am planning to improve it and use Qt framework in release 2.0.
 
 ![alt text](https://db3pap002files.storage.live.com/y4mDd8sPDQiH8DUNodxNTnTBTHbQrfm4ehhyz13KegRulZU99hb6P7K6voHaCnqK9jeUjItIDCLGtBzg93hyCi_MXWmM8f51iLSe6xpy8vLQmDzVtQrHAJtik8qJk_bWXgwjebjKjW4UDN1utCJNJDBcyaxJl_7zz_PRqUS6mglCGduNoyb_OHnvRR2KftPYZe0FtMx2GhUkxR8T2BT7dtIpQ/con_ui.jpg?psid=1&width=765&height=200)
 
