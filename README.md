@@ -38,7 +38,7 @@ When the user will pass ui the application is launching it's main window with vi
 
 **ArrowDown** - to decrease movement speed.
 
-During visualisation nodes are colored. Green colored nodes indicate all visited nodes. When the rocket will reach the final node some of nodes are colored red, which indicates that those nodes belongs to the path found by algorithm. Below you can see short gif which shows how does the application works.
+During visualisation nodes are colored. Green colored nodes indicate all visited nodes. When the rocket will reach the final node some of nodes are colored red, which indicates that those nodes belongs to the path found by algorithm. Below you can see screenshots which shows how does the application works.
 
 ![alt text](https://db3pap002files.storage.live.com/y4mVMvA3MaS0s8AWJgN2nFlNz1GL5VR9GCByFA7rGq-gguvMfIwW0mlFq8bIA3gXwDlRzeC00SSWSN9_fPoxpY-ymqQoSqJ4WNY20mIJ4pB8TUPwBkxlDhgE0js0kPGNypU5-QR-2LQANtm1nLY_Ck1VECEY0Vs4TNbM2VieG2V9XFzKnB1NmqOi5DnLUnLAk5Vj9-9PDA9oFnceojuuN1RAw/over1.jpg?psid=1&width=1202&height=832)
 
