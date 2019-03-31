@@ -34,9 +34,9 @@ When the user will pass ui the application is launching it's main window with vi
 
 **D** - to move right
 
-**ArrowUp** - to increase movement speed
+**ArrowUp** - to increase camera movement speed
 
-**ArrowDown** - to decrease movement speed.
+**ArrowDown** - to decrease camera movement speed.
 
 During visualisation nodes are colored. Green colored nodes indicate all visited nodes. When the rocket will reach the final node some of nodes are colored red, which indicates that those nodes belongs to the path found by algorithm. Below you can see screenshots which shows how does the application works.
 
